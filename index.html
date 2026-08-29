@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Полный гайд по ИИ для новичков — с нуля за 1 вечер</title>
+<meta name="description" content="Гайд по нейронкам для тех, кто знает 0. Что такое ИИ, с чего начать, какие сервисы юзать, 5 шаблонов промптов, роадмап 7/30 дней. Один вечер — и ты в теме.">
+<meta property="og:title" content="Полный гайд по ИИ для новичков">
+<meta property="og:description" content="С нуля за 1 вечер. Карта ИИ, старт за 15 минут, промпты копипаст, роадмап.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0ea5e9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=JetBrains+Mono:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <div class="badge">📌 Закреп для канала • обновляется • v1.0 — август 2026</div>
+      <h1>Полный гайд по ИИ<br><span class="accent">для новичков с нуля</span></h1>
+      <p class="lead">Знаешь про ИИ чуть-чуть? Этого хватит. За 1 вечер поймёшь карту, запустишь первые 3 нейронки и получишь 5 рабочих промптов. Без воды, без кода.</p>
+      <div class="hero__cta">
+        <a href="#s3" class="btn btn--primary">Начать за 15 мин →</a>
+        <button class="btn btn--ghost" id="printBtn">📄 Скачать PDF</button>
+        <button class="btn btn--ghost" id="shareBtn">↗ Поделиться</button>
+      </div>
+      <div class="hero__meta">
+        <span>⏱ 18 мин чтения</span><span>•</span><span>🎯 0 → 1 уровень</span><span>•</span><span>🔄 Обновляю каждый месяц</span>
+      </div>
+    </div>
+    <div class="hero__card">
+      <div class="hero__card-head">Что внутри гайда</div>
+      <ul class="checklist">
+        <li>Карта ИИ — текст / картинки / видео / голос / код</li>
+        <li>3 сервиса на старт — бесплатно</li>
+        <li>5 промптов копипаст</li>
+        <li>Роадмап 7 и 30 дней</li>
+        <li>Ошибки где сливают деньги</li>
+      </ul>
+      <div class="hero__demo">
+        <div class="demo__label">Живой пример промпта →</div>
+        <div class="demo__type" id="typed"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="layout wrap">
+  <aside class="toc" id="toc">
+    <div class="toc__title">Оглавление</div>
+    <nav class="toc__nav">
+      <a href="#s1" data-nav>1. Что такое ИИ за 3 мин</a>
+      <a href="#s2" data-nav>2. Карта ИИ — 5 веток</a>
+      <a href="#s3" data-nav>3. Старт за 15 минут</a>
+      <a href="#s4" data-nav>4. 5 промптов копипаст</a>
+      <a href="#s5" data-nav>5. Кейсы: где применять</a>
+      <a href="#s6" data-nav>6. Ошибки новичка</a>
+      <a href="#s7" data-nav>7. Роадмап 7 / 30 дней</a>
+      <a href="#s8" data-nav>8. Словарь + чек-лист</a>
+    </nav>
+    <div class="toc__foot">
+      <div class="toc__progress">
+        <div class="toc__bar"><i id="tocBar"></i></div>
+        <span id="tocPct">0%</span>
+      </div>
+      <a class="toc__tg" href="#" id="tgLink">Твой канал →</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <!-- 1 -->
+    <section id="s1" class="card">
+      <div class="kicker">01 — база</div>
+      <h2>Что такое ИИ — без занудства</h2>
+      <p><b>ИИ = программа, которая учится на примерах.</b> Ты показал 1 млн картинок котов — она генерит новых котов. Показал тексты — пишет тексты. Магии нет.</p>
+      <div class="grid2">
+        <div class="mini">
+          <h3>🧩 3 уровня — запомни</h3>
+          <ul>
+            <li><b>Классический ИИ</b> — правила if/else. Шахматы 90-х.</li>
+            <li><b>Машинное обучение</b> — учится на данных. Рекомендации YouTube.</li>
+            <li><b>Генеративный ИИ</b> — создаёт новое. ChatGPT, Midjourney. Тебе сюда.</li>
+          </ul>
+        </div>
+        <div class="mini mini--accent">
+          <h3>⚡️ Как это юзать тебе?</h3>
+          <p>Ты не обучаешь модели. Ты <b>пишешь промпт → получаешь результат</b>. Навык №1 — правильно просить.</p>
+          <div class="prompt-example">
+            <code>плохо: "напиши пост"</code>
+            <code class="good">хорошо: "Ты — SMM для кофейни. Напиши пост 120 слов, тон дружелюбный, CTA — зайти на завтрак, 3 хештега"</code>
+          </div>
+        </div>
+      </div>
+      <div class="callout">💡 Мышление: ИИ — не замена мозга, а <b>ускоритель</b>. Ты — пилот, ИИ — турбина.</div>
+    </section>
+
+    <!-- 2 MAP -->
+    <section id="s2" class="card">
+      <div class="kicker">02 — карта</div>
+      <h2>Карта ИИ — 5 веток, куда идти</h2>
+      <p class="muted">Кликни ветку — увидишь топ-сервисы и что генерит. Не надо учить всё, выбери 1-2.</p>
+
+      <div class="tabs" id="mapTabs">
+        <button class="tab active" data-tab="text">📝 Текст</button>
+        <button class="tab" data-tab="image">🎨 Картинки</button>
+        <button class="tab" data-tab="video">🎬 Видео</button>
+        <button class="tab" data-tab="voice">🎙 Голос</button>
+        <button class="tab" data-tab="code">💻 Код/Авто</button>
+      </div>
+
+      <div class="map-grid">
+        <div class="map-pane active" data-pane="text">
+          <div class="service"><b>ChatGPT / Claude / Gemini</b><span>тексты, идеи, анализ</span></div>
+          <div class="service"><b>Perplexity</b><span>поиск с источниками</span></div>
+          <div class="service"><b>Notion AI</b><span>конспекты, базы</span></div>
+          <div class="demo-box">Попробуй: "Объясни тему Х как будто мне 12 лет, 5 пунктов"</div>
+        </div>
+        <div class="map-pane" data-pane="image">
+          <div class="service"><b>Midjourney / Flux / DALL·E</b><span>арт, фото, лого</span></div>
+          <div class="service"><b>Ideogram</b><span>текст на картинках</span></div>
+          <div class="service"><b>Remove.bg / Magnific</b><span>обработка</span></div>
+          <div class="demo-box">Промпт: "minimal poster, coffee shop, warm light, --ar 3:4"</div>
+        </div>
+        <div class="map-pane" data-pane="video">
+          <div class="service"><b>Runway / Luma / Kling</b><span>видео из текста/фото</span></div>
+          <div class="service"><b>HeyGen / D-ID</b><span>аватары говорящие</span></div>
+          <div class="service"><b>CapCut AI</b><span>монтаж авто</span></div>
+          <div class="demo-box">Фото → видео: загрузи фото → "camera slowly zooms in, cinematic"</div>
+        </div>
+        <div class="map-pane" data-pane="voice">
+          <div class="service"><b>ElevenLabs / OpenAI TTS</b><span>озвучка</span></div>
+          <div class="service"><b>Suno / Udio</b><span>музыка из текста</span></div>
+          <div class="service"><b>Whisper</b><span>транскрибация</span></div>
+          <div class="demo-box">Текст → голос за 10 сек: вставь пост → выбери голос</div>
+        </div>
+        <div class="map-pane" data-pane="code">
+          <div class="service"><b>Cursor / Copilot</b><span>код + сайт</span></div>
+          <div class="service"><b>Make / n8n / Zapier</b><span>автоматизация без кода</span></div>
+          <div class="service"><b>GPTs / Custom GPT</b><span>твой бот</span></div>
+          <div class="demo-box">Авто: "Когда новая заявка в ТГ → пиши в таблицу + шли письмо"</div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong id="statHours">~2ч</strong><span>чтоб освоить базу</span></div>
+        <div class="stat"><strong>0₽</strong><span>старт бесплатно</span></div>
+        <div class="stat"><strong>80%</strong><span>задач закроет текстовая ИИ</span></div>
+      </div>
+    </section>
+
+    <!-- 3 START -->
+    <section id="s3" class="card card--dark">
+      <div class="kicker kicker--light">03 — старт 15 минут</div>
+      <h2>Запусти первые 3 нейронки прямо сейчас</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div>
+            <h3>ChatGPT или Claude — твой мозг на аутсорсе</h3>
+            <p>Зайди на <b>chatgpt.com</b> или <b>claude.ai</b>. Бесплатно. Вставь промпт ниже, нажми Enter.</p>
+            <div class="copybox">
+              <pre>Ты — мой ассистент по ИИ. Объясни мне, как работает ChatGPT, за 5 пунктов, простым языком, с 1 примером использования для новичка.</pre>
+              <button class="copy" data-copy>Копировать</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div>
+            <h3>Perplexity — гугл на стероидах</h3>
+            <p>Зайди на <b>perplexity.ai</b>. Спроси: "Топ-5 бесплатных нейронок для картинок в 2026 с плюсами и минусами + ссылки". Получишь ответ с источниками.</p>
+            <div class="copybox">
+              <pre>Найди топ-5 бесплатных нейросетей для генерации картинок в 2026. Сравни по качеству, цене, лимитам. Дай ссылки.</pre>
+              <button class="copy" data-copy>Копировать</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div>
+            <h3>Ideogram / Flux — первая картинка</h3>
+            <p>Зайди на <b>ideogram.ai</b> (бесплатно). Вставь:</p>
+            <div class="copybox">
+              <pre>cozy telegram guide cover, minimal flat illustration, books and AI chip, pastel colors, text "AI GUIDE" -- style clean</pre>
+              <button class="copy" data-copy>Копировать</button>
+            </div>
+            <p class="muted small">Через 10 сек получишь 4 варианта. Скачай лучший — это твоя обложка.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout--dark">✅ Чек: после 3 шагов у тебя: 1 диалог с ИИ, 1 ресерч, 1 картинка. База закрыта.</div>
+    </section>
+
+    <!-- 4 PROMPTS -->
+    <section id="s4" class="card">
+      <div class="kicker">04 — промпты</div>
+      <h2>5 промптов — копипаст и юзай</h2>
+      <p class="muted">Формула: <b>Роль + Задача + Контекст + Формат + Ограничения</b>. Вставь свои данные в [скобки].</p>
+
+      <div class="prompts">
+        <article class="prompt">
+          <div class="prompt__head">
+            <h3>1. Объясни сложное просто</h3>
+            <button class="copy" data-copy>Копировать</button>
+          </div>
+          <pre>Ты — преподаватель, объясняешь [ТЕМА] человеку без опыта.
+Дай: 1) определение 1 предложением 2) аналогию из жизни 3) 3 примера 4) где ошибаются новички.
+Пиши просто, без жаргона, до 200 слов.</pre>
+        </article>
+        <article class="prompt">
+          <div class="prompt__head">
+            <h3>2. Пост для ТГ за 60 сек</h3>
+            <button class="copy" data-copy>Копировать</button>
+          </div>
+          <pre>Ты — копирайтер ТГ-канала про [ТЕМА КАНАЛА].
+Напиши пост 130-160 слов про [ИДЕЯ]. Структура: крючок 1 строка, 3 тезиса с эмодзи, вывод + вопрос в комменты. Тон: дружелюбный, без воды.</pre>
+        </article>
+        <article class="prompt">
+          <div class="prompt__head">
+            <h3>3. План обучения</h3>
+            <button class="copy" data-copy>Копировать</button>
+          </div>
+          <pre>Составь план изучения [НАВЫК] за 14 дней по 30 мин в день.
+Каждый день: теория 10 мин + практика 20 мин + 1 задание. Дай чек-лист прогресса в таблице.</pre>
+        </article>
+        <article class="prompt">
+          <div class="prompt__head">
+            <h3>4. Разбор + улучшение текста</h3>
+            <button class="copy" data-copy>Копировать</button>
+          </div>
+          <pre>Ты — редактор. Вот мой текст: "[ВСТАВЬ ТЕКСТ]".
+1) Найди 3 слабых места 2) Перепиши сильнее, сохрани смысл 3) Дай 2 заголовка-крючка.</pre>
+        </article>
+        <article class="prompt">
+          <div class="prompt__head">
+            <h3>5. Идеи контента на неделю</h3>
+            <button class="copy" data-copy>Копировать</button>
+          </div>
+          <pre>Придумай 7 идей постов для ТГ про [ТЕМА] для новичков.
+Формат: день | идея | формат (пост/опрос/кружок) | крючок 1 строка. Без банальщины.</pre>
+        </article>
+      </div>
+
+      <div class="builder">
+        <h3>🧪 Конструктор промпта — собери свой</h3>
+        <div class="builder__grid">
+          <label>Роль <input id="bRole" value="Ты — эксперт по ИИ"></label>
+          <label>Задача <input id="bTask" value="объясни, как начать новичку"></label>
+          <label>Формат <select id="bFormat"><option>список 5 пунктов</option><option>таблица</option><option>пост для ТГ</option><option>чек-лист</option></select></label>
+        </div>
+        <pre id="bOut" class="builder__out"></pre>
+        <button class="btn btn--primary small" id="bCopy">Копировать собранный</button>
+      </div>
+    </section>
+
+    <!-- 5 CASES -->
+    <section id="s5" class="card">
+      <div class="kicker">05 — кейсы</div>
+      <h2>Где применять уже завтра</h2>
+      <div class="cases">
+        <div class="case">
+          <div class="case__icon">📚</div>
+          <h3>Учёба</h3>
+          <ul>
+            <li>Конспект лекции из аудио → Whisper + ChatGPT</li>
+            <li>Объясни тему как для 5 класса</li>
+            <li>Тест 10 вопросов для самопроверки</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="case__icon">💼</div>
+          <h3>Работа</h3>
+          <ul>
+            <li>Письма, резюме, отчеты за 2 мин</li>
+            <li>Сводка встречи → задачи + дедлайны</li>
+            <li>Анализ таблицы — "найди аномалии"</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="case__icon">🎨</div>
+          <h3>Контент</h3>
+          <ul>
+            <li>Посты, сценарии Reels, обложки</li>
+            <li>Озвучка ElevenLabs</li>
+            <li>Монтаж CapCut AI</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="case__icon">🏠</div>
+          <h3>Быт</h3>
+          <ul>
+            <li>Меню на неделю из холодильника</li>
+            <li>План поездки с бюджетом</li>
+            <li>Тренировка под твой уровень</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare">
+        <h3>До / После с ИИ</h3>
+        <div class="compare__row">
+          <div><span class="tag tag--bad">До</span> 2 часа на пост → ступор → гугл</div>
+          <div><span class="tag tag--good">После</span> 12 мин: промпт → 3 варианта → выбрал → готово</div>
+        </div>
+        <input type="range" id="effort" min="0" max="100" value="72">
+        <div class="compare__foot"><span>Экономия времени</span><strong id="effortVal">72% ⏱</strong></div>
+      </div>
+    </section>
+
+    <!-- 6 ERRORS -->
+    <section id="s6" class="card card--warn">
+      <div class="kicker">06 — ошибки</div>
+      <h2>Где новички сливают время и деньги</h2>
+      <div class="errors">
+        <div class="error">
+          <span class="error__n">1</span>
+          <div><h3>Покупать 5 подписок сразу</h3><p>Старт бесплатный. Плати только когда уперся в лимит. Одной ChatGPT Plus хватает на 90% задач.</p></div>
+        </div>
+        <div class="error">
+          <span class="error__n">2</span>
+          <div><h3>Копипаст без проверки</h3><p>ИИ галлюцинирует. Проси: "дай источники" или "проверь факты". Цифры — перепроверяй.</p></div>
+        </div>
+        <div class="error">
+          <span class="error__n">3</span>
+          <div><h3>Промпт в 2 слова</h3><p>"Напиши пост" = мусор. Дай роль, формат, пример. Чем точнее вход — тем точнее выход.</p></div>
+        </div>
+        <div class="error">
+          <span class="error__n">4</span>
+          <div><h3>Учить всё сразу</h3><p>Выбери 1 ветку на 2 недели. Текст → картинки → видео. Не прыгай.</p></div>
+        </div>
+        <div class="error">
+          <span class="error__n">5</span>
+          <div><h3>Бояться палить данные</h3><p>Не лей паспорт/ключи. А для работы — ок. Используй отдельный акк для тестов.</p></div>
+        </div>
+      </div>
+      <div class="callout">🛡 Правило: <b>ИИ — черновик, ты — редактор.</b> Никогда не публикуй 1-в-1 без вычитки.</div>
+    </section>
+
+    <!-- 7 ROADMAP -->
+    <section id="s7" class="card">
+      <div class="kicker">07 — роадмап</div>
+      <h2>Роадмап 7 и 30 дней — кликай дни</h2>
+      <div class="roadmap__switch">
+        <button class="btn btn--primary small active" data-road="7">7 дней — быстрый</button>
+        <button class="btn btn--ghost small" data-road="30">30 дней — глубокий</button>
+      </div>
+
+      <div class="road" id="road7">
+        <div class="day open"><button class="day__head"><span>День 1 — первый диалог</span><i>▼</i></button><div class="day__body">Заведи ChatGPT + Perplexity. 5 промптов из раздела 4 прогони. Сохрани лучшие ответы в заметки.</div></div>
+        <div class="day"><button class="day__head"><span>День 2 — текст на поток</span><i>▼</i></button><div class="day__body">Напиши 3 поста для ТГ через промпт №2. Опубликуй 1. Спроси ИИ: "что улучшить?"</div></div>
+        <div class="day"><button class="day__head"><span>День 3 — картинки</span><i>▼</i></button><div class="day__body">Сгенери 10 картинок в Ideogram. Сделай аватар, обложку, мем. Пойми что такое "стиль, свет, ракурс".</div></div>
+        <div class="day"><button class="day__head"><span>День 4 — голос и видео</span><i>▼</i></button><div class="day__body">Озвучь пост в ElevenLabs. Сделай 1 видео из фото в Runway/Luma.</div></div>
+        <div class="day"><button class="day__head"><span>День 5 — автоматизация</span><i>▼</i></button><div class="day__body">Собери связку в Make: "новая идея → таблица → черновик поста". Без кода.</div></div>
+        <div class="day"><button class="day__head"><span>День 6 — свой бот</span><i>▼</i></button><div class="day__body">Создай Custom GPT: "помощник для моего канала, знает мой тон". Скорми 5 своих постов.</div></div>
+        <div class="day"><button class="day__head"><span>День 7 — система</span><i>▼</i></button><div class="day__body">Собери базу в Notion: промпты / идеи / результаты. План на 30 дней.</div></div>
+      </div>
+
+      <div class="road hidden" id="road30">
+        <div class="weeks">
+          <div class="week"><h4>Неделя 1 — база текста</h4><p>Промпты, посты, ресерч. Цель: 10 постов с ИИ.</p></div>
+          <div class="week"><h4>Неделя 2 — визуал</h4><p>Картинки + видео + озвучка. Цель: 1 Reels в день.</p></div>
+          <div class="week"><h4>Неделя 3 — автоматизация</h4><p>Make/n8n, боты, таблицы. Цель: сэкономить 5ч/нед.</p></div>
+          <div class="week"><h4>Неделя 4 — продукт</h4><p>Собери мини-продукт: гайд/бот/лендинг с ИИ за 3 дня.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 DICT -->
+    <section id="s8" class="card">
+      <div class="kicker">08 — финал</div>
+      <h2>Словарь + чек-лист + куда дальше</h2>
+      <div class="grid2">
+        <div>
+          <h3>📖 Словарь 30 сек</h3>
+          <dl class="dict">
+            <dt>Промпт</dt><dd>запрос к ИИ. Чем точнее — тем лучше результат.</dd>
+            <dt>Токены</dt><dd>кусочки текста, за которые платишь. ~750 слов = 1000 токенов.</dd>
+            <dt>Галлюцинация</dt><dd>ИИ выдумал факт. Лечится: "дай источники".</dd>
+            <dt>Температура</dt><dd>креативность 0-1. 0 — точно, 1 — безумно.</dd>
+          </dl>
+        </div>
+        <div class="check">
+          <h3>✅ Чек-лист старта</h3>
+          <label><input type="checkbox"> Завел ChatGPT/Claude</label>
+          <label><input type="checkbox"> Прогнал 5 промптов</label>
+          <label><input type="checkbox"> Сгенерил 3 картинки</label>
+          <label><input type="checkbox"> Озвучил 1 пост</label>
+          <label><input type="checkbox"> Сделал 1 видео из фото</label>
+          <label><input type="checkbox"> Собрал базу промптов</label>
+          <div class="check__bar"><i id="checkBar"></i><span id="checkTxt">0/6</span></div>
+        </div>
+      </div>
+
+      <h3>🔗 Подборка — сохрани</h3>
+      <div class="links">
+        <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
+        <a href="https://claude.ai" target="_blank">Claude</a>
+        <a href="https://perplexity.ai" target="_blank">Perplexity</a>
+        <a href="https://ideogram.ai" target="_blank">Ideogram</a>
+        <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a>
+        <a href="https://runwayml.com" target="_blank">Runway</a>
+      </div>
+
+      <div class="final-cta">
+        <h3>Готов? Один шаг.</h3>
+        <p>Открой ChatGPT и вставь первый промпт из раздела 4. Через 2 минуты у тебя будет результат. Потом вернись за следующим.</p>
+        <div class="final-cta__btns">
+          <a href="#s3" class="btn btn--primary">Начать сейчас →</a>
+          <button class="btn btn--ghost" id="copyLinkBtn">Скопировать ссылку на гайд</button>
+        </div>
+        <p class="muted small">Гайд от твоего канала • Обновляется • Поделись с другом-новичком — сэкономишь ему неделю гуглежа.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Твой канал • Сделано с ИИ и любовью</span>
+      <a href="#" id="toTop">↑ Наверх</a>
+    </footer>
+  </main>
+</div>
+
+<button class="fab" id="fab">☰</button>
+<div class="mobile-toc" id="mobileToc">
+  <a href="#s1">1. Что такое ИИ</a><a href="#s2">2. Карта</a><a href="#s3">3. Старт</a><a href="#s4">4. Промпты</a><a href="#s5">5. Кейсы</a><a href="#s6">6. Ошибки</a><a href="#s7">7. Роадмап</a><a href="#s8">8. Чек-лист</a>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
