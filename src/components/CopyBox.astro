@@ -1,0 +1,15 @@
+---
+const { text } = Astro.props;
+---
+<div class="relative rounded-xl border bg-white p-3 pr-14 my-3">
+  <pre class="m-0 whitespace-pre-wrap break-words text-[12px] leading-5" style="font-family:JetBrains Mono,monospace">{text}</pre>
+  <button class="copybtn absolute top-2 right-2 px-2 py-1 rounded-full border bg-white text-[11px] font-bold" data-copy={text}>Копировать</button>
+</div>
+<script>
+  document.querySelectorAll('.copybtn').forEach(b=>{
+    b.addEventListener('click', async()=>{
+      const t = b.getAttribute('data-copy')||'';
+      try{ await navigator.clipboard.writeText(t); const o=b.textContent; b.textContent='✓'; setTimeout(()=> b.textContent=o,1000);}catch{}
+    });
+  });
+</script>

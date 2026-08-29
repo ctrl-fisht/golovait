@@ -1,0 +1,20 @@
+---
+const { tabs } = Astro.props as { tabs: {label:string, content:string}[] };
+---
+<div class="my-4 border rounded-2xl overflow-hidden bg-white">
+  <div class="flex gap-2 p-2 border-b bg-slate-50 overflow-x-auto">
+    {tabs.map((t,i)=> <button class={`tabbtn px-3 py-1.5 rounded-full border text-[13px] font-semibold whitespace-nowrap ${i===0?'bg-slate-900 text-white':''}`} data-i={i}>{t.label}</button>)}
+  </div>
+  <div class="p-4">
+    {tabs.map((t,i)=> <div class={`tabpane ${i===0?'':'hidden'}`} data-i={i} set:html={t.content}></div>)}
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.tabbtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i=btn.getAttribute('data-i');
+      document.querySelectorAll('.tabbtn').forEach(b=> b.classList.toggle('bg-slate-900', b.getAttribute('data-i')===i) || b.classList.toggle('text-white', b.getAttribute('data-i')===i));
+      document.querySelectorAll('.tabpane').forEach(p=> p.classList.toggle('hidden', p.getAttribute('data-i')!==i));
+    });
+  });
+</script>
