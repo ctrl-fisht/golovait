@@ -3,13 +3,19 @@ import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).filter(p=>!p.data.draft).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf());
 ---
-<Base title="Блог — Golovait" description="Статьи про ИИ для новичков. 1 статья = 1 страница с интерактивом.">
+<Base title="Блог — айти голова" description="IT, Вайбкодинг, Автоматизация — 1 статья = 1 страница с интерактивом.">
   <div class="max-w-[1120px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-extrabold" style="font-family:Manrope">Блог</h1>
-    <p class="text-slate-600">Каждая статья — одна страница с интерактивом: копипаст, табы, конструктор. Клепаем из md.</p>
+    <p class="text-slate-600 dark:text-slate-400">3 темы: IT · Вайбкодинг · Автоматизация. Фильтруй по тегу, 1 статья = 1 страница.</p>
+    <div class="flex gap-2 mt-3 flex-wrap">
+      <a href="/blog" class="px-3 py-1 rounded-full border text-sm font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900">Все</a>
+      <a href="/blog/tag/it" class="px-3 py-1 rounded-full border text-sm">IT</a>
+      <a href="/blog/tag/vaybkoding" class="px-3 py-1 rounded-full border text-sm">Вайбкодинг</a>
+      <a href="/blog/tag/avtomatizatsiya" class="px-3 py-1 rounded-full border text-sm">Автоматизация</a>
+    </div>
     <div class="grid md:grid-cols-3 gap-4 mt-6">
       {posts.map(p=> (
-        <a href={`/blog/${p.id.replace(/\.mdx?$/,'')}`} class="rounded-2xl border bg-white p-4 hover:shadow block">
+        <a href={`/blog/${p.id.replace(/\.mdx?$/,'')}`} class="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.06] p-4 hover:shadow block">
           <div class="text-[11px] font-bold text-sky-600">{p.data.date.toLocaleDateString('ru-RU')}</div>
           <div class="font-bold leading-tight mt-1">{p.data.title}</div>
           <div class="text-sm text-slate-600 line-clamp-2 mt-1">{p.data.description}</div>
