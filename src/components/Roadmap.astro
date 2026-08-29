@@ -1,0 +1,19 @@
+---
+const days = [
+ ["День 1 — первый диалог","Заведи ChatGPT + Perplexity, погоняй 5 промптов."],
+ ["День 2 — текст","3 поста для ТГ, 1 опубликуй."],
+ ["День 3 — картинки","10 картинок в Ideogram."],
+ ["День 4 — голос/видео","ElevenLabs + Runway."],
+ ["День 5 — авто","Make: идея → таблица → черновик."],
+ ["День 6 — бот","Custom GPT с твоим тоном."],
+ ["День 7 — система","Notion база + план 30 дней."],
+];
+---
+<div class="my-4 grid gap-2">
+  {days.map((d,i)=> (
+    <details class="border rounded-xl bg-white p-3" open={i===0}>
+      <summary class="font-bold cursor-pointer">{d[0]}</summary>
+      <div class="text-[13px] text-slate-600 mt-2">{d[1]}</div>
+    </details>
+  ))}
+</div>
