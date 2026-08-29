@@ -1,21 +1,39 @@
-# ii-guide — Полный гайд по ИИ для новичков
+# Golovait — Гид по ИИ для новичков
 
-Одностраничный HTML-гайд для телеграм-канала. С нуля за 1 вечер.
+Статика на **Starlight + Tailwind + Astro**. Контент — `src/content/docs/*.md` из ИИ, деплой `GitHub Pages -> golovait.ru`.
 
-**Фичи:** прогресс-бар, липкое оглавление, табы карты ИИ, копипаст промптов, конструктор промпта, роадмап 7/30, чек-лист, печать в PDF.
+**Структура**
+```
+src/content/docs/
+  index.mdx          # ленд
+  guide/01..08*.md   # 8 блоков полного гайда
+  blog/01-*.md       # статьи (клепай md + push)
+  about.md
+astro.config.mjs     # site: https://golovait.ru, sidebar, tailwind
+```
 
-**Стек:** vanilla HTML/CSS/JS, без сборки. Деплой на GitHub Pages через Actions.
+**Команды**
+```
+npm install
+npm run dev    # localhost:4321
+npm run build  # -> dist/
+npm run preview
+```
 
-## Деплой
-1. Залей на GitHub в репо `ii-guide`
-2. Settings → Pages → Source: **GitHub Actions**
-3. Пуш в `main` → сайт на `https://username.github.io/ii-guide/`
+**Новый пост**
+```
+# создать src/content/docs/blog/02-tema.md
+---
+title: "Заголовок"
+description: "130 симв для SEO"
+---
+контент
+```
+Пуш в `starlight` или `main` -> `Actions` -> `Pages` -> `https://golovait.ru/blog/02-tema/`
 
-## Локально
-Просто открой `index.html` или `npx serve .`
+**Деплой**
+- `Pages` source: `GitHub Actions` (workflow `deploy.yml` билд `dist`)
+- DNS: 4 A `@` + CNAME `www` + `Enforce HTTPS` (уже настроен)
+- `site` в `astro.config.mjs` — менять при смене домена
 
-## Кастом
-- Канал: замени `href` у `#tgLink` в `index.html:150`
-- Цвета: `:root` в `style.css:1`
-- Контент: 8 секций `#s1`–`#s8`
-- PDF: кнопка `window.print()` + `@media print`
+**Старый гайд** — `main` ветка архив (`index.html` статика), текущий — `starlight` ветка.
