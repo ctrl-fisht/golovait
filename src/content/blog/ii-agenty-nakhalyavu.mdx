@@ -1,0 +1,112 @@
+---
+title: "Используем ИИ-агентов НАХАЛЯВУ (и кайфуем)"
+description: "Как юзать Claude Code, OpenCode и других агентов бесплатно через ИИ-роутер free-claude-code + NVIDIA NIM. Пошагово, без бубна."
+date: 2026-08-21
+tags: ["автоматизация", "vaybkoding", "it"]
+---
+
+import CopyBox from "../../components/CopyBox.astro";
+
+<div class="not-prose mb-6 flex items-center gap-3 p-3 rounded-2xl border border-white/10 bg-white/[0.04]">
+  <img src="/ava.jpg" alt="айти голова" class="w-9 h-9 rounded-xl object-cover border border-white/10" />
+  <div>
+    <div class="text-[13px] font-bold">@golovait · 21 августа 2026</div>
+    <div class="text-[12px] text-slate-400">Перенесено с Telegraph — красиво для айти голова</div>
+  </div>
+  <a href="https://t.me/golovait" target="_blank" class="ml-auto hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-900 text-[13px] font-bold">Telegram Канал →</a>
+</div>
+
+Все мы любим **халяву**. А ИИшка нынче **дорогая**. Особенно в СНГ.
+
+Никто не хочет раздавать GPU-мощности бесплатно (а жаль 😪). Разберем способ — юзай пока актуально.
+
+![он юзает иишку на халяву](https://sun9-29.vkuserphoto.ru/s/v1/ig2/IWMOOSOwsTjfr7SXW1PmS6zRZtvqSzzb6AYZUYi2QnKwj3oWSAVRrM9vPFf4twhfoudFecclAZfsvR6f3cHd6525.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720&from=bu&cs=1280x0)
+
+## ИИ-роутеры на примере free-claude-code 🤖
+
+Существует пачка "**ии-роутеров**" — `fcc`, `omni-route`, `9route` и др. Суть: на комп ставится программа с **OpenAI-совместимым API**.
+
+> Далеко от IT? Твой агент (`opencode`, `claude`, `pi`, `codex`) думает не сам. Он шлёт запрос на конкретный API, например `platform.claude.com`, там модель `Claude` жжёт токены и отвечает агенту что делать.
+
+Роутер — **посредник** между агентом и моделью. Вместо платной модели роутер **пересылает** запросы к моделям с **бесплатными лимитами**.
+
+![Схема работы роутера](https://sun9-10.vkuserphoto.ru/s/v1/ig2/gmBN0nH-5PD1ZlFHoqtMB9qLiuOqcWRmgGQVujmK6bLCGnTugXnMzISogDH1NCVcuON8s97uzddRSoh-nYwJbNxS.jpg?quality=95&as=32x18,48x27,72x41,108x61,160x90,240x135,360x203,480x270,540x304,640x360,720x405,1080x608,1280x720,1440x810,1672x941&from=bu&cs=1672x0)
+
+Примеров много, но самый приветливый — **free-claude-code**. Меньше возни.
+
+Репо:
+
+<a href="https://github.com/alishahryar1/free-claude-code" target="_blank" class="not-prose inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white text-slate-900 font-bold">GitHub: free-claude-code →</a>
+
+## Установка
+
+Одна команда. Открой **Powershell** (Windows) или **Terminal** (macOS/Linux).
+
+<div class="not-prose my-4 grid gap-3">
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">macOS / Linux</div>
+    <CopyBox text='curl -fsSL "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh" | sh' />
+  </div>
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">Windows (PowerShell)</div>
+    <CopyBox text='& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.ps1")))' />
+  </div>
+</div>
+
+Далее выбери для каких агентов ставить роутер (`y` — да, `n` — нет). У меня **Claude** + **OpenCode** (должны быть установлены, иначе ошибка).
+
+![выбор агентов](https://sun9-88.vkuserphoto.ru/s/v1/ig2/ExnDk88h1mxoHCxjOkZVvntGxW9Y-iub4THTagFW5TJl2eVS-nAkg0nstSHP9lyMeUkpt6YT991NlWFyD3PluTB4.jpg?quality=95&as=32x9,48x13,72x20,108x30,160x45,240x68,360x101,480x135,540x152,640x180,720x203,974x274&from=bu&cs=974x0)
+
+Советую **RTK optimizer не ставить** (тоже `n`).
+
+Если на Windows — сразу ярлык на рабочем столе появится (говорю же — приветливый).
+
+![установилось](https://sun9-52.vkuserphoto.ru/s/v1/ig2/MmAb8jX2DPeK6CIfwXJPMkrEiurw9HwhqIaGuwxYJKLh-HbGqby_iUD7zhlpqyR4CKU-e0Z4e_6YFrfN8rAk75hM.jpg?quality=95&as=32x35,48x52,72x78,108x117,109x118&from=bu&cs=109x0)
+
+## Запуск и настройка
+
+Запускаем программу → откроется `127.0.0.1:8082/admin`.
+
+Если не открылось — в трее (справа снизу, где фоновые программы) иконка → правой кнопкой → статус. Если `Server Stopped` → `Quit` → перезапусти.
+
+![админка](https://sun9-45.vkuserphoto.ru/s/v1/ig2/F4DTGtdQsXQnrecn8Lvo5ACEZNyZ_y--LsouUCsTYEVyiXcBCMv7jxmLGb-tJWtlZb8DuvQPEmq8A5vX0PUyA16k.jpg?quality=95&as=32x20,48x29,72x44,108x66,160x98,240x147,360x221,480x294,540x331,640x392,720x441,1080x662,1280x784,1440x883,1444x885&from=bu&cs=1444x0)
+
+### Добавление халявных моделей на примере NVIDIA NIM
+
+1. Иди на [build.nvidia.com/models](https://build.nvidia.com/models) → рега.
+2. Если просит номер, а РФ нет в списке → проси друга-иностранца или `onlinesim.io` → пополни → арендуй номер Таиланд ~0.30$ → подтверди.
+3. В настройках создай API-ключ → вставь в роутер → **сохрани**.
+
+Выглядит так:
+
+![настроенные провайдеры](https://sun9-78.vkuserphoto.ru/impg/OUutyVE160jSs_NR7yas2hD6PwTdwl4S9sfXJg/EECCFGtUpkM.jpg?size=2233x1279&quality=95&sign=fd49a11e0acddacca4ba86239ec37578&type=album)
+
+По аналогии добавь `OpenRouter`, `Kilo AI`, `OpenCode` — чекай где бесплатные лимиты.
+
+## Работаем с агентами
+
+Фишка `free-claude-code` — автоматом делает обёртку для запуска агентов. Через роутер надо писать `fcc-<агент>`:
+
+<div class="not-prose grid sm:grid-cols-3 gap-2 my-4">
+  <CopyBox text="fcc-opencode" />
+  <CopyBox text="fcc-claude" />
+  <CopyBox text="fcc-codex" />
+</div>
+
+Гибко: хочешь через роутер — `fcc-`, хочешь напрямую — обычно. Без возни с конфигами.
+
+![пример команды для opencode](https://sun9-83.vkuserphoto.ru/s/v1/ig2/x6giafej37pMkun5ljujdUl02y_p0MCVjP3DNb3UnKHh4uYkmxG6y9dFT6FZcXn5xSG2oh6JCxpIIsf3c9fCZrTx.jpg?quality=95&as=32x15,48x23,72x34,108x51,160x76,240x114,320x152&from=bu&cs=320x0)
+
+После запуска работай как обычно. Роутер прокидывает все модели из провайдеров (у меня `NVIDIA NIM + OpenRouter`) — выбирай и делай что хочешь.
+
+![выбор моделей](https://sun9-62.vkuserphoto.ru/s/v1/ig2/h7aI6EdP-8fdnTlJIN7w8HgWBaGOuVuiq_PyJoAKw0coxnZVvkzoNKcqToWQ0GfDbbVPnJ3K4TRU-TBZDXgkPq0b.jpg?quality=95&as=32x23,48x35,72x52,108x78,160x116,240x173,360x260,480x347,540x390,640x463,720x520,1080x781,1280x925,1440x1041,1688x1220&from=bu&cs=1688x0)
+
+<div class="not-prose mt-8 p-4 rounded-2xl border border-sky-500/20 bg-sky-500/10 flex flex-wrap gap-3 items-center justify-between">
+  <div>
+    <div class="font-bold">Кайфуем на халяве? 😎</div>
+    <div class="text-sm text-slate-300">Подпишись на <b>@golovait</b> — там ещё про вайбкодинг и авто.</div>
+  </div>
+  <a href="https://t.me/golovait" target="_blank" class="px-4 py-2 rounded-full bg-white text-slate-900 font-bold">Telegram Канал →</a>
+</div>
+
+> Оригинал: [Telegraph](https://telegra.ph/Ispolzuem-II-agent-NAHALYAVU-i-kajfuem-08-21-2) · Перенесено на **айти голова** с вёрсткой, копипастом и тёмной темой.
