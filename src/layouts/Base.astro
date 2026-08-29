@@ -37,12 +37,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <a href="/blog" class="hover:text-sky-400">Статьи</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="https://t.me/golovait" target="_blank" rel="noopener" class="hidden sm:inline-flex px-3 py-1.5 rounded-full bg-white text-slate-900 text-[13px] font-semibold">ТГ →</a>
+      <a href="https://t.me/golovait" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-900 text-[13px] font-semibold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-9.48 9.08A9.5 9.5 0 0 0 12 22.5a9.5 9.5 0 0 0 9.48-10.92A9.5 9.5 0 0 0 12 2.5Zm4.6 7.1-1.56 7.36c-.12.54-.44.67-.89.42l-2.47-1.82-1.19 1.14c-.13.13-.24.24-.5.24l.18-2.55 4.66-4.21c.2-.18-.05-.28-.31-.1l-5.76 3.63-2.48-.77c-.54-.17-.55-.54.11-.8l9.68-3.73c.45-.16.84.1.69.8Z" fill="currentColor" opacity=".95"/><path d="M8.1 12.1c1.2-.74 2.48-1.52 4-2.46l-3.4 3.08-.6 2.9.9-1.1 1.2-1.15-1.6-1.18Z" fill="white" opacity=".9"/></svg>
+        Telegram Канал
+      </a>
       <button id="mnav" class="md:hidden w-8 h-8 grid place-items-center rounded-lg border border-white/10">☰</button>
     </div>
   </div>
   <div id="mmenu" class="hidden md:hidden border-t border-white/10 bg-[#0b0e14] px-4 py-3 flex-col gap-2 text-[14px]">
-    <a href="/">Главная</a><a href="/blog">Статьи</a><a href="https://t.me/golovait" target="_blank">ТГ канал →</a>
+    <a href="/">Главная</a><a href="/blog">Статьи</a><a href="https://t.me/golovait" target="_blank" class="inline-flex items-center gap-2"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2.5a9.5 9.5 0 0 0-9.48 9.08A9.5 9.5 0 0 0 12 22.5a9.5 9.5 0 0 0 9.48-10.92A9.5 9.5 0 0 0 12 2.5Zm4.6 7.1-1.56 7.36c-.12.54-.44.67-.89.42l-2.47-1.82-1.19 1.14c-.13.13-.24.24-.5.24l.18-2.55 4.66-4.21c.2-.18-.05-.28-.31-.1l-5.76 3.63-2.48-.77c-.54-.17-.55-.54.11-.8l9.68-3.73c.45-.16.84.1.69.8Z" fill="currentColor"/></svg> Telegram Канал</a>
   </div>
 </header>
 <div id="progress" class="fixed top-[56px] left-0 h-[3px] w-0 bg-gradient-to-r from-sky-500 to-violet-500 z-50"></div>
