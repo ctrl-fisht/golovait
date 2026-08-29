@@ -46,7 +46,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <a href="/blog" class="hover:text-sky-500">Статьи</a>
     </nav>
     <div class="flex items-center gap-2">
-      <button id="theme" class="w-8 h-8 grid place-items-center rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 text-[13px]" aria-label="Тема">🌙</button>
+      <button id="theme" aria-label="Переключить тему" class="relative w-[52px] h-[28px] rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/10 p-[2px] flex items-center transition-colors">
+        <span class="absolute inset-0 flex items-center justify-between px-[5px] text-[11px] pointer-events-none select-none">
+          <span>☀️</span><span>🌙</span>
+        </span>
+        <span id="knob" class="relative w-[22px] h-[22px] rounded-full bg-white dark:bg-white shadow flex items-center justify-center text-[11px] transition-all translate-x-0 dark:translate-x-[24px]">🌙</span>
+      </button>
       <a href="https://t.me/golovait" target="_blank" rel="noopener" class="hidden sm:inline-flex px-3 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[13px] font-semibold">ТГ →</a>
       <button id="mnav" class="md:hidden w-8 h-8 grid place-items-center rounded-lg border border-slate-200 dark:border-white/10">☰</button>
     </div>
@@ -66,12 +71,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   const mnav = document.getElementById('mnav');
   const mmenu = document.getElementById('mmenu');
   const theme = document.getElementById('theme');
+  const knob = document.getElementById('knob');
   function apply(d){
     document.documentElement.classList.toggle('dark', d);
-    if(theme) theme.textContent = d ? '☀️' : '🌙';
+    if(knob) knob.textContent = d ? '🌙' : '☀️';
     try{ localStorage.setItem('theme', d?'dark':'light')}catch{}
   }
-  // init icon
+  // init
   apply(document.documentElement.classList.contains('dark'));
   mnav?.addEventListener('click', ()=> mmenu?.classList.toggle('hidden'));
   theme?.addEventListener('click', ()=> apply(!document.documentElement.classList.contains('dark')));
