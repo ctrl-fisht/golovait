@@ -4,19 +4,35 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf()).slice(0,6);
 ---
 <Base title="айти голова" description="IT, Вайбкодинг, Автоматизация — коротко и по делу.">
-  <section class="max-w-[760px] mx-auto px-4 py-12">
-    <h1 class="text-[40px] font-extrabold tracking-tight" style="font-family:Manrope">айти голова</h1>
-    <p class="mt-2 text-slate-600 dark:text-slate-400">IT · Вайбкодинг · Автоматизация</p>
+  <section class="max-w-[760px] mx-auto px-4 pt-10 pb-6">
+    <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+      <img src="/ava.jpg" alt="айти голова" width="120" height="120" class="w-[112px] h-[112px] rounded-[24px] object-cover border border-slate-200 dark:border-white/10 shadow-lg" loading="eager" />
+      <div>
+        <h1 class="text-[38px] font-extrabold tracking-tight leading-none" style="font-family:Manrope">айти голова</h1>
+        <p class="mt-2 text-[15px] leading-6 text-slate-600 dark:text-slate-300 max-w-[520px]">
+          Пишу про <b class="text-slate-900 dark:text-white">IT</b> без воды, <b class="text-slate-900 dark:text-white">вайбкодинг</b> в потоке и <b class="text-slate-900 dark:text-white">автоматизацию</b> — отдать рутину боту, себе оставить творчество. Коротко, с примерами и интерактивом.
+        </p>
+        <div class="mt-3 flex gap-2 flex-wrap">
+          <a href="/blog" class="px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[13px] font-bold">Статьи →</a>
+          <a href="https://t.me/golovait" target="_blank" class="px-4 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 text-[13px] font-semibold">ТГ канал</a>
+        </div>
+      </div>
+    </div>
   </section>
   <section class="max-w-[760px] mx-auto px-4">
-    <div class="grid gap-3">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-[13px] font-extrabold tracking-widest text-slate-500 dark:text-slate-400">СВЕЖЕЕ</h2>
+      <a href="/blog" class="text-[13px] font-semibold text-sky-500">Все →</a>
+    </div>
+    <div class="mt-3 grid gap-3">
       {posts.map(p=> (
-        <a href={`/blog/${p.id.replace(/\.mdx?$/,'')}`} class="group flex justify-between gap-4 py-4 border-b border-slate-200 dark:border-white/10 hover:opacity-80">
-          <div>
-            <div class="font-semibold leading-tight group-hover:text-sky-500">{p.data.title}</div>
-            <div class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 mt-1">{p.data.description}</div>
+        <a href={`/blog/${p.id.replace(/\.mdx?$/,'')}`} class="group flex gap-4 p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.06] hover:bg-slate-50 dark:hover:bg-white/[0.08] transition">
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold leading-tight group-hover:text-sky-500 line-clamp-2">{p.data.title}</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mt-1">{p.data.description}</div>
+            <div class="text-[11px] font-bold tracking-wide text-slate-400 mt-2">{p.data.tags?.[0]?.toUpperCase()} · {p.data.date.toLocaleDateString('ru-RU')}</div>
           </div>
-          <div class="text-[12px] text-slate-400 whitespace-nowrap pt-1">{p.data.date.toLocaleDateString('ru-RU')}</div>
+          <div class="hidden sm:block w-7 h-7 rounded-full border border-slate-200 dark:border-white/10 grid place-items-center text-slate-400 group-hover:text-sky-500">→</div>
         </a>
       ))}
     </div>
