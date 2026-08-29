@@ -1,14 +1,14 @@
 ---
 ---
-<div class="my-4 p-4 rounded-2xl border bg-gradient-to-b from-white to-slate-50">
+<div class="my-4 p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white to-slate-50 dark:from-white/[0.06] dark:to-white/[0.03]">
   <div class="font-bold" style="font-family:Manrope">🧪 Конструктор промпта</div>
   <div class="grid md:grid-cols-[1fr_1fr_160px] gap-2 mt-3">
-    <label class="text-[12px] font-semibold text-slate-500">Роль<input id="bRole" class="mt-1 w-full border rounded-xl px-3 py-2 text-[13px]" value="Ты — эксперт по ИИ" /></label>
-    <label class="text-[12px] font-semibold text-slate-500">Задача<input id="bTask" class="mt-1 w-full border rounded-xl px-3 py-2 text-[13px]" value="объясни как начать новичку" /></label>
-    <label class="text-[12px] font-semibold text-slate-500">Формат<select id="bFormat" class="mt-1 w-full border rounded-xl px-3 py-2 text-[13px]"><option>список 5 пунктов</option><option>таблица</option><option>пост для ТГ</option></select></label>
+    <label class="text-[12px] font-semibold text-slate-500 dark:text-slate-400">Роль<input id="bRole" class="mt-1 w-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 rounded-xl px-3 py-2 text-[13px]" value="Ты — эксперт по ИИ" /></label>
+    <label class="text-[12px] font-semibold text-slate-500 dark:text-slate-400">Задача<input id="bTask" class="mt-1 w-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 rounded-xl px-3 py-2 text-[13px]" value="объясни как начать новичку" /></label>
+    <label class="text-[12px] font-semibold text-slate-500 dark:text-slate-400">Формат<select id="bFormat" class="mt-1 w-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 rounded-xl px-3 py-2 text-[13px]"><option>список 5 пунктов</option><option>таблица</option><option>пост для ТГ</option></select></label>
   </div>
-  <pre id="bOut" class="mt-3 bg-slate-900 text-slate-100 p-3 rounded-xl text-[12px] whitespace-pre-wrap" style="font-family:JetBrains Mono"></pre>
-  <button id="bCopy" class="mt-2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-[13px] font-bold">Копировать</button>
+  <pre id="bOut" class="mt-3 bg-slate-900 dark:bg-black/60 text-slate-100 p-3 rounded-xl text-[12px] whitespace-pre-wrap" style="font-family:JetBrains Mono"></pre>
+  <button id="bCopy" class="mt-2 px-3 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[13px] font-bold">Копировать</button>
 </div>
 <script>
   const r=document.getElementById('bRole'), t=document.getElementById('bTask'), f=document.getElementById('bFormat'), o=document.getElementById('bOut'), c=document.getElementById('bCopy');
