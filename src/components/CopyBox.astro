@@ -1,9 +1,9 @@
 ---
 const { text } = Astro.props;
 ---
-<div class="relative rounded-xl border bg-white p-3 pr-14 my-3">
+<div class="relative rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.06] p-3 pr-14 my-3">
   <pre class="m-0 whitespace-pre-wrap break-words text-[12px] leading-5" style="font-family:JetBrains Mono,monospace">{text}</pre>
-  <button class="copybtn absolute top-2 right-2 px-2 py-1 rounded-full border bg-white text-[11px] font-bold" data-copy={text}>Копировать</button>
+  <button class="copybtn absolute top-2 right-2 px-2 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 text-[11px] font-bold" data-copy={text}>Копировать</button>
 </div>
 <script>
   document.querySelectorAll('.copybtn').forEach(b=>{

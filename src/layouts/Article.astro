@@ -4,24 +4,24 @@ const { title, description, date, tags = [] } = Astro.props;
 ---
 <Base title={title} description={description}>
   <main class="max-w-[760px] mx-auto px-4 py-6">
-    <div class="flex flex-wrap gap-2 text-[12px] font-semibold tracking-wide uppercase text-slate-500">
-      <a href="/blog" class="hover:text-slate-900">← Блог</a> <span>·</span> <span>{date}</span> {tags.map((t:string)=> <span class="px-2 py-0.5 rounded-full bg-sky-50 border text-sky-700">#{t}</span>)}
+    <div class="flex flex-wrap gap-2 text-[12px] font-semibold tracking-wide uppercase text-slate-500 dark:text-slate-400">
+      <a href="/blog" class="hover:text-slate-900 dark:hover:text-white">← Блог</a> <span>·</span> <span>{date}</span> {tags.map((t:string)=> <span class="px-2 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-300">#{t}</span>)}
     </div>
     <h1 class="mt-3 text-[28px] md:text-[36px] font-extrabold leading-[1.05] tracking-tight" style="font-family:Manrope">{title}</h1>
-    <p class="mt-3 text-[16px] leading-6 text-slate-600">{description}</p>
+    <p class="mt-3 text-[16px] leading-6 text-slate-600 dark:text-slate-400">{description}</p>
     <div class="mt-4 flex gap-2">
-      <button id="share" class="px-3 py-1.5 rounded-full border bg-white text-[13px] font-semibold">↗ Поделиться</button>
-      <button onclick="window.print()" class="px-3 py-1.5 rounded-full border bg-white text-[13px] font-semibold">📄 PDF</button>
+      <button id="share" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 text-[13px] font-semibold">↗ Поделиться</button>
+      <button onclick="window.print()" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/10 text-[13px] font-semibold">📄 PDF</button>
     </div>
-    <article class="prose prose-slate max-w-none prose-headings:font-[Manrope] prose-a:text-sky-600 prose-pre:bg-slate-900 prose-pre:text-slate-100 mt-6 prose-h2:text-[22px] prose-h3:text-[16px]">
+    <article class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-[Manrope] prose-a:text-sky-500 prose-pre:bg-slate-900 dark:prose-pre:bg-black/50 mt-6 prose-h2:text-[22px] prose-h3:text-[16px] prose-invert:prose-headings:text-white">
       <slot />
     </article>
-    <div class="mt-8 p-4 rounded-2xl bg-slate-900 text-white flex flex-wrap gap-3 items-center justify-between">
+    <div class="mt-8 p-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex flex-wrap gap-3 items-center justify-between">
       <div>
         <div class="font-bold" style="font-family:Manrope">Понравилось? Поделись с другом-новичком</div>
-        <div class="text-sm text-slate-300">Сэкономишь ему неделю гуглежа</div>
+        <div class="text-sm text-slate-300 dark:text-slate-600">Сэкономишь ему неделю гуглежа</div>
       </div>
-      <a href="https://t.me/golovait" class="px-4 py-2 rounded-full bg-white text-slate-900 font-bold text-sm">ТГ канал →</a>
+      <a href="https://t.me/golovait" target="_blank" class="px-4 py-2 rounded-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold text-sm">ТГ канал →</a>
     </div>
   </main>
   <script>
