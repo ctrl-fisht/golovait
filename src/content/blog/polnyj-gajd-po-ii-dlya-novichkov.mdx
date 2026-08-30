@@ -1,0 +1,297 @@
+---
+title: 'ПОЛНЫЙ ГАЙД ПО ИИ ДЛЯ НОВИЧКОВ — с нуля до первого результата за вечер'
+description: 'Зачем тебе НЕ нужен курс по ИИ, бесплатный стартовый набор нейросетей, что такое агенты и вайбкодинг, и как реально начать шарить — мой метод без воды.'
+date: 2026-08-30
+tags: ['ии для новичков', 'chatgpt', 'нейросети', 'вайбкодинг', 'гайд по ии']
+draft: false
+---
+
+import CopyBox from '../../components/CopyBox.astro';
+
+## Введение в базу (кратко)
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-red-500/20 bg-red-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-bold text-red-200">Спойлер:</span> работе с ИИ в общем-то не
+  нужно в привычном смысле "учится".
+</div>
+
+<p
+  class="mt-4 text-[18px] md:text-[20px] font-extrabold leading-7 text-white"
+  style="font-family:Manrope"
+>
+  Для тех кто думает что ИИ это что-то СЛОЖНОЕ чему нужно ДОЛГО УЧИТСЯ:
+</p>
+<p class="mt-3 text-[16px] leading-7 text-slate-200">
+  Весь сегодняший “ИИ” это просто{' '}
+  <span class="font-bold text-white">Языковые модели (LLM)</span> или{' '}
+  <span class="font-bold text-white">генеративные модели</span>.
+</p>
+
+<div class="not-prose grid md:grid-cols-2 gap-3 my-5">
+  <div class="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-sky-300 uppercase">
+      Языковые модели — LLM
+    </div>
+    <div class="mt-2 text-[14px] leading-6 text-slate-200">
+      Ты пишешь текстом свой запрос и получаешь ответ. Всё.
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-1.5">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#10a37f]/15 border border-[#10a37f]/30 text-white font-bold text-[11px] leading-none">
+        ChatGPT
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#8b5cf6]/15 border border-[#8b5cf6]/30 text-white font-bold text-[11px] leading-none">
+        Claude
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#3b82f6]/15 border border-[#3b82f6]/30 text-white font-bold text-[11px] leading-none">
+        Gemini
+      </span>
+      <span class="text-[11px] font-semibold tracking-wide text-slate-400 uppercase">и другие</span>
+
+    </div>
+
+  </div>
+  <div class="rounded-2xl border border-violet-500/20 bg-violet-500/10 p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-violet-300 uppercase">
+      Генеративные модели
+    </div>
+    <div class="mt-2 text-[14px] leading-6 text-slate-200">
+      Генераторы картинок, видео и тд. Так же пишешь запрос - но
+      результат картинка/видео.
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-1.5">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#f59e0b]/15 border border-[#f59e0b]/30 text-white font-bold text-[11px] leading-none">Kling</span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#eab308]/15 border border-[#eab308]/30 text-white font-bold text-[11px] leading-none">Nano Banana</span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#ec4899]/15 border border-[#ec4899]/30 text-white font-bold text-[11px] leading-none">Midjourney</span>
+      <span class="text-[11px] font-semibold tracking-wide text-slate-400 uppercase">и другие</span>
+    </div>
+  </div>
+</div>
+
+### Вот и весь ИИ на 2026 год. До AGI еще далеко (надеюсь)
+
+<div class="not-prose my-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div class="text-[13px] font-bold tracking-widest text-slate-400 uppercase mb-3"></div>
+  <ul class="space-y-3 text-[14px] leading-6 text-slate-300">
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        1
+      </span>
+      <span>
+        Учится этому <span class="font-bold text-white">не нужно</span>,
+        заходишь в нужный сервис, платишь деньги и пользуешься.
+      </span>
+    </li>
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        2
+      </span>
+      <span class="flex-1">
+        Если у тебя возник любой вопрос — спрашиваешь у
+        <span class="inline-flex flex-wrap gap-1.5 ml-1 align-middle">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10a37f]/15 border border-[#10a37f]/30 text-white font-bold text-[12px] leading-none">
+            ChatGPT
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#8b5cf6]/15 border border-[#8b5cf6]/30 text-white font-bold text-[12px] leading-none">
+            Claude
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3b82f6]/15 border border-[#3b82f6]/30 text-white font-bold text-[12px] leading-none">
+            Gemini
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        3
+      </span>
+      <span>
+        если тема сложная —{' '}
+        <span class="font-bold text-white">задаешь много вопросов</span>,
+        просишь <span class="font-bold text-white">объяснить по-простому</span>,
+        смотришь <span class="font-bold text-white">YouTube</span> и тд.
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-center">
+  <span
+    class="text-[15px] font-extrabold text-emerald-200"
+    style="font-family:Manrope"
+  >
+    Это всё. Серьезно.
+  </span>
+</div>
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-[14px] leading-6 text-slate-200">
+  А вот что <span class="font-bold text-amber-200">стоит знать</span> — это
+  настраиваение окружения (Harness), как повысить эффективность ИИ, как тратить
+  меньше токенов и так далее. Об этом я рассказываю у себя в тг, и частично в
+  этой статье.
+  <a
+    href="https://t.me/golovait"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1.5 ml-1 px-3 py-1 rounded-full bg-white text-slate-900 font-bold text-[13px] hover:bg-slate-100 transition"
+  >
+    t.me/golovait →
+  </a>
+</div>
+
+## Стартовый набор (БЕСПЛАТНО)
+
+Не надо платить 20$ за подписку. Начни с этого — всё работает в РФ (где-то нужен VPN, укажу).
+
+### Чат-боты — 90% пользы
+
+| Сервис                           | Зачем                                 | VPN | Лимит бесплатно                |
+| -------------------------------- | ------------------------------------- | --- | ------------------------------ |
+| **ChatGPT** `chat.openai.com`    | Универсал: тексты, идеи, учёба        | да  | ~10 запросов к GPT-5 в 5 часов |
+| **Gemini** `gemini.google.com`   | Анализ файлов, картинок, гугл-доки    | да  | щедрый, почти безлимит         |
+| **DeepSeek** `chat.deepseek.com` | Самый щедрый, умный, безлимит         | нет | безлимит                       |
+| **Claude** `claude.ai`           | Лучший для кода и длинных текстов     | да  | ~5-10 в день                   |
+| **GigaChat / YandexGPT**         | На русском без VPN, для быстрых задач | нет | безлимит                       |
+| **Kandinsky / Шедеврум**         | Картинки по тексту "кот космонавт"    | нет | безлимит                       |
+
+**Мой совет:** заведи 3 штуки — ChatGPT + DeepSeek + GigaChat. Один и тот же вопрос задай всем трём и сравни. Сразу поймёшь кто где силён.
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-sky-500/20 bg-sky-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-bold text-sky-200">Фишка:</span> Не прыгай по 10 сервисам.
+  Выбери ОДИН основной и дрочи его 7 дней. Потом добавишь второй.
+</div>
+
+### За 5 минут проверь что всё работает
+
+Скопируй и вставь в любой чат:
+
+<CopyBox text="Объясни как будто мне 12 лет: что такое LLM и чем отличается от обычной программы. Приведи 2 примера из жизни и задай мне 1 вопрос чтобы проверить понял ли я." />
+
+Если ответил понятно — ты внутри. Дальше — интереснее.
+
+---
+
+## 3. Агенты и вайбкодинг
+
+Чат — это ты пишешь, он отвечает. **Агент** — это чат, который сам умеет делать: создавать файлы, запускать код, гуглить, править сайт.
+
+**Вайбкодинг** = ты описываешь словами, агент кодит. Без знания программирования.
+
+### Как это выглядит в жизни
+
+Ты пишешь агенту:
+
+<CopyBox text="Сделай лендинг для кофейни: меню, фото, кнопка WhatsApp, тёмная тема. Запусти и покажи." />
+
+А он:
+
+1. создаёт файлы `index.html`, `style.css`
+2. запускает сайт у тебя в браузере
+3. ты говоришь "сделай кнопку больше" — он правит
+
+И всё это в консоли, как будто общаешься в Telegram.
+
+### Чем делать
+
+- **Claude Code**, **OpenCode**, **Cursor** — топ-3 агента сейчас
+- Работают через API моделей (платно). Но есть лайфхак — **роутеры**
+
+Роутер — прокладка между агентом и моделью, которая бесплатно раздаёт лимиты (NVIDIA NIM, OpenRouter и др.). Мы уже сделали подробный гайд:
+
+<a
+  href="/blog/ii-agenty-nakhalyavu"
+  class="not-prose inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white text-slate-900 font-bold"
+>
+  Гайд: ИИ-агенты НАХАЛЯВУ (роутер free-claude-code) →
+</a>
+
+Там установка в 1 команду и `fcc-opencode` / `fcc-claude` — и ты уже вайбкодишь бесплатно.
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-semibold text-amber-200">Важно:</span> Агент — не магия. Он
+  тоже галлюцинирует и может сломать файл. Держи <code>git</code> или копии, и
+  всегда проверяй что он сделал.
+</div>
+
+### Когда тебе нужен агент?
+
+- Надо сделать сайт/бота/скрипт, а кодить не умеешь
+- Надо автоматизировать рутину (парсинг, таблицы, отчеты)
+- Хочешь не болтать, а чтобы ИИ **делал руками**
+
+Если пока просто пишешь тексты — хватит чата. К агентам вернёшься когда захочешь автоматизироваться.
+
+---
+
+## 4. Как начать шарить (мой метод обучения)
+
+Забудь про "сначала выучу теорию". Учись наоборот — **через практику**.
+
+### Моя формула за 14 дней (30 мин в день)
+
+**День 1-3: База промптов.** Не учи "промпт-инжиниринг", выучи 1 шаблон:
+
+<div class="not-prose my-4 grid gap-3">
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">
+      УНИВЕРСАЛЬНЫЙ ШАБЛОН — КОПИРУЙ
+    </div>
+    <CopyBox text="Ты — [РОЛЬ]. Задача: [ЧТО СДЕЛАТЬ]. Контекст: [ДЛЯ КОГО, ЗАЧЕМ]. Формат: [СПИСОК / ТАБЛИЦА / ПОСТ / КОД]. Ограничения: [ДЛИНА, ТОН, ЧТО НЕ ДЕЛАТЬ]." />
+  </div>
+</div>
+
+Пример:
+
+Плохо: <CopyBox text="напиши пост про бизнес" />
+Хорошо: <CopyBox text="Ты — SMM для кофеен. Задача: пост про поднятие среднего чека. Контекст: владельцы в РФ, бюджет 0. Формат: 5 пунктов с примером. Тон: дружелюбно, без воды. До 800 знаков." />
+
+**Ещё 3 приёма:**
+
+1. `Рассуждай шаг за шагом`
+2. `Вот пример ответа: ... Сделай так же`
+3. `Задай 3 уточняющих вопроса прежде чем отвечать`
+
+**День 4-7: 5 упражнений за вечер (по 10 мин)**
+
+1. Разбери тему: <CopyBox text="Объясни как будто мне 12 лет: что такое блокчейн. 3 примера и тест из 5 вопросов." />
+2. Упрости работу: <CopyBox text="Сделай из текста: 1) саммари 3 пункта 2) список дел 3) письмо коллеге. Текст: [вставь]" />
+3. Контент: <CopyBox text="Придумай 10 идей Reels про [твоя тема]. Хук 3 сек + сценарий 30 сек + CTA. Без банальщины." />
+4. План обучения: <CopyBox text="План изучения [Excel/Python/SMM] за 14 дней. День = тема + практика 20 мин + проверка. Таблицей." />
+5. Анализ файла: загрузи в Gemini скрин договора/чека и скажи `Найди ошибки и предложи как улучшить`
+
+Сделал эти 5 — ты уже лучше 80% кто "просто болтает с GPT".
+
+**День 8-14: Делай свой мини-проект.** Выбери ОДИН:
+
+- Лендинг для себя/клиента через агента
+- Тг-бот который отвечает на вопросы по твоей базе
+- Автоматизация: "каждый день присылай мне 3 новости по моей теме в таблицу"
+
+> Правило: 30 мин в день > 5 часов в выходной. Регулярность решает.
+
+### Топ-5 ошибок из-за которых бросают
+
+1. Верить на слово — ИИ сочиняет ссылки/цифры. Проси источники.
+2. Один огромный промпт — дроби: сначала план, потом каждый пункт.
+3. "Сделай лучше" — не работает. Говори "короче, без клише, добавь пример".
+4. Сливать паспорт/ключи в чат — не надо. Используй фейковые данные.
+5. Бросать после 1 плохого ответа — это диалог. Жми `уточни, перепиши, добавь юмора`.
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-white/10 bg-white/[0.04] text-[14px] leading-6 text-slate-200">
+  <span class="font-bold text-white">Проверка что ты шаришь:</span> можешь за 5
+  мин объяснить другу что такое агент и показать 1 кейс где ИИ сэкономил тебе
+  час? Если да — ты уже не новичок.
+</div>
+
+---
+
+## Короче
+
+1. **Введение** — ИИ это LLM + генерация, учиться нечему, просто пользуйся.
+2. **Курсы не нужны** — база бесплатна, решает практика.
+3. **Старт — DeepSeek/GigaChat/ChatGPT** — один основной, не 10.
+4. **Агенты = когда надо делать, а не болтать** — вайбкодинг через `free-claude-code`.
+5. **Шарить начнёшь когда делаешь каждый день** — шаблон РОЛЬ+ЗАДАЧА+КОНТЕКСТ и 1 мини-проект.
+
+Скопируй 1 промпт из этого гайда прямо сейчас и прогони. Дальше — только быстрее.
+
+_В следующей статье разберём автоматизации без кода и как не словить бан за ИИ-контент. Практикуйся._
