@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 import { getCollection } from "astro:content";
 const posts = (await getCollection("blog")).filter(p=>!p.data.draft).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf());
 ---
-<Base title="Статьи — айти голова" description="IT, Вайбкодинг, Автоматизация — 1 статья = 1 страница.">
+<Base title="Статьи" description="Все статьи про бесплатные ИИ-агенты, вайбкодинг и автоматизацию — гайды по free-claude-code, NVIDIA NIM, opencode и Claude Code на айти голова.">
   <div class="max-w-[760px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-extrabold" style="font-family:Manrope">Статьи</h1>
     <div class="grid gap-3 mt-6">

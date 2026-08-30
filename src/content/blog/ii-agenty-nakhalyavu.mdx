@@ -1,90 +1,106 @@
 ---
-title: "Используем ИИ-агентов НАХАЛЯВУ (и кайфуем)"
-description: "Как юзать Claude Code, OpenCode и других агентов бесплатно через ИИ-роутер free-claude-code + NVIDIA NIM. Пошагово, без бубна."
+title: 'Используем ИИ-агентов НАХАЛЯВУ (и кайфуем)'
+description: 'Как бесплатно юзать Claude Code и OpenCode через роутер free-claude-code + NVIDIA NIM — установка одной командой, настройка API, fcc-агенты'
 date: 2026-08-21
+tags: ["ии-агенты бесплатно", "free-claude-code", "NVIDIA NIM", "opencode", "claude code"]
 ---
 
-import CopyBox from "../../components/CopyBox.astro";
-
-<div class="not-prose mb-6 flex items-center gap-3 p-3 rounded-2xl border border-white/10 bg-white/[0.04]">
-  <img src="/ava.jpg" alt="айти голова" class="w-9 h-9 rounded-xl object-cover border border-white/10" />
-  <div>
-    <div class="text-[13px] font-bold">@golovait · 21 августа 2026</div>
-    <div class="text-[12px] text-slate-400">Перенесено с Telegraph — красиво для айти голова</div>
-  </div>
-  <a href="https://t.me/golovait" target="_blank" class="ml-auto hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-900 text-[13px] font-bold">Telegram Канал →</a>
-</div>
+import CopyBox from '../../components/CopyBox.astro';
+import { Image } from 'astro:assets';
+import fcc01 from '../../assets/blog/fcc-01.jpg';
+import fcc02 from '../../assets/blog/fcc-02.jpg';
+import fcc03 from '../../assets/blog/fcc-03.jpg';
+import fcc04 from '../../assets/blog/fcc-04.jpg';
+import fcc05 from '../../assets/blog/fcc-05.jpg';
+import fcc06 from '../../assets/blog/fcc-06.jpg';
+import fcc07 from '../../assets/blog/fcc-07.jpg';
+import fcc08 from '../../assets/blog/fcc-08.jpg';
 
 Все мы любим **халяву**. А ИИшка нынче **дорогая**. Особенно в СНГ.
+И я вам скажу, что никто сильно-то не хочет раздавать GPU-мощностя бесплатно (а жаль 😪).
 
-Никто не хочет раздавать GPU-мощности бесплатно (а жаль 😪). Разберем способ — юзай пока актуально.
+Однако сегодня разберем один из способов, поэтому юзайте пока актуально.
 
-![он юзает иишку на халяву](https://sun9-29.vkuserphoto.ru/s/v1/ig2/IWMOOSOwsTjfr7SXW1PmS6zRZtvqSzzb6AYZUYi2QnKwj3oWSAVRrM9vPFf4twhfoudFecclAZfsvR6f3cHd6525.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720&from=bu&cs=1280x0)
+<Image src={fcc01} alt="он юзает иишку на халяву — бесплатные ИИ-агенты через free-claude-code" loading="eager" />
 
 ## ИИ-роутеры на примере free-claude-code 🤖
 
-Существует пачка "**ии-роутеров**" — `fcc`, `omni-route`, `9route` и др. Суть: на комп ставится программа с **OpenAI-совместимым API**.
+Существует целая пачка "**ии-роутеров**" (`fcc`, `omni route`, `9route` и пр.) - вкратце вся их суть такова - на компьютер ставится программа, которая имеет `OpenAI` совместимый `API`.
 
-> Далеко от IT? Твой агент (`opencode`, `claude`, `pi`, `codex`) думает не сам. Он шлёт запрос на конкретный API, например `platform.claude.com`, там модель `Claude` жжёт токены и отвечает агенту что делать.
+<div class="not-prose my-4 p-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-semibold text-amber-200">Кто далёк от IT:</span> ваш консольный агент (`opencode`, `claude`, `pi`, `codex` и др.) думает не сам, а отправляет запросы на конкретный `API`, предположим что на *'platform.claude.com'*, *там моделька `Claude` пыхтит и жгёт ваши токены и отвечает агенту, что ему делать.*
+</div>
 
-Роутер — **посредник** между агентом и моделью. Вместо платной модели роутер **пересылает** запросы к моделям с **бесплатными лимитами**.
+Так вот роутер ставится как посредник между агентом и моделью. Вместо того чтобы слать запросы платной модели, роутер **пересылает** их моделям с **бесплатными лимитами**.
 
-![Схема работы роутера](https://sun9-10.vkuserphoto.ru/s/v1/ig2/gmBN0nH-5PD1ZlFHoqtMB9qLiuOqcWRmgGQVujmK6bLCGnTugXnMzISogDH1NCVcuON8s97uzddRSoh-nYwJbNxS.jpg?quality=95&as=32x18,48x27,72x41,108x61,160x90,240x135,360x203,480x270,540x304,640x360,720x405,1080x608,1280x720,1440x810,1672x941&from=bu&cs=1672x0)
+<Image src={fcc02} alt="схема работы ИИ-роутера free-claude-code — посредник между агентом и моделью" />
 
-Примеров много, но самый приветливый — **free-claude-code**. Меньше возни.
+Примеров таких **роутеров** много, но мы рассмотрим (как по мне наиболее приветливый) **free-claude-code**. С ним меньше возни.
 
-Репо:
+Вот сам репозиторий ⬇️
 
-<a href="https://github.com/alishahryar1/free-claude-code" target="_blank" class="not-prose inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white text-slate-900 font-bold">GitHub: free-claude-code →</a>
+<a
+  href="https://github.com/alishahryar1/free-claude-code"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="not-prose inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white text-slate-900 font-bold"
+>
+  GitHub: free-claude-code →
+</a>
+
+<div class="not-prose my-3 text-[13px] italic text-slate-400">Инструкция там есть, но на всякий случай напишу со своими комментариями</div>
 
 ## Установка
 
-Одна команда. Открой **Powershell** (Windows) или **Terminal** (macOS/Linux).
+Ставится всё в одну команду: открываете `Powershell` (**Windows**) или `Terminal` (**macOS**/**linux**)
+
+Для мака/линукса вводите следующую команду:
 
 <div class="not-prose my-4 grid gap-3">
   <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">macOS / Linux</div>
+    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">
+      Для мака/линукса
+    </div>
     <CopyBox text='curl -fsSL "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.sh" | sh' />
   </div>
   <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">Windows (PowerShell)</div>
+    <div class="text-[11px] font-extrabold tracking-widest text-slate-400">
+      Для винды (powershell)
+    </div>
     <CopyBox text='& ([scriptblock]::Create((irm "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.ps1")))' />
   </div>
 </div>
 
-Далее выбери для каких агентов ставить роутер (`y` — да, `n` — нет). У меня **Claude** + **OpenCode** (должны быть установлены, иначе ошибка).
+Далее выбираете для каких агентов будет установлен роутер ('**y' - чтобы установить и 'n' - чтобы не устанавливать**), у меня это **Claude** и **OpenCode** (должны быть установлены у вас на пк, иначе будет ошибка).
 
-![выбор агентов](https://sun9-88.vkuserphoto.ru/s/v1/ig2/ExnDk88h1mxoHCxjOkZVvntGxW9Y-iub4THTagFW5TJl2eVS-nAkg0nstSHP9lyMeUkpt6YT991NlWFyD3PluTB4.jpg?quality=95&as=32x9,48x13,72x20,108x30,160x45,240x68,360x101,480x135,540x152,640x180,720x203,974x274&from=bu&cs=974x0)
+<Image src={fcc03} alt="выбор агентов для установки роутера — Claude и OpenCode, советую RTK оптимизатор не ставить" />
 
-Советую **RTK optimizer не ставить** (тоже `n`).
+**Установили**. Если вы как и я на винде, то у вас даже сразу ярлык на рабочем столе появится (говорю же приветливый роутер)
 
-Если на Windows — сразу ярлык на рабочем столе появится (говорю же — приветливый).
-
-![установилось](https://sun9-52.vkuserphoto.ru/s/v1/ig2/MmAb8jX2DPeK6CIfwXJPMkrEiurw9HwhqIaGuwxYJKLh-HbGqby_iUD7zhlpqyR4CKU-e0Z4e_6YFrfN8rAk75hM.jpg?quality=95&as=32x35,48x52,72x78,108x117,109x118&from=bu&cs=109x0)
+<Image src={fcc04} alt="установка free-claude-code завершена — ярлык на рабочем столе Windows" />
 
 ## Запуск и настройка
 
-Запускаем программу → откроется `127.0.0.1:8082/admin`.
+Запускаем программу, откроется в браузере **`127.0.0.1:8082/admin`**
+если не открылось, то в трее (на панели задач справа снизу в винде, где у вас открыты фонововые программы) будет иконка, **правой кнопкой** клик и там можно посмотреть статус. Если статус = `Server Stopped`, то снова правой кнопкой и `Quit`, чтобы программа закрылась. И перезапускаем, **всё должно заработать**.
 
-Если не открылось — в трее (справа снизу, где фоновые программы) иконка → правой кнопкой → статус. Если `Server Stopped` → `Quit` → перезапусти.
-
-![админка](https://sun9-45.vkuserphoto.ru/s/v1/ig2/F4DTGtdQsXQnrecn8Lvo5ACEZNyZ_y--LsouUCsTYEVyiXcBCMv7jxmLGb-tJWtlZb8DuvQPEmq8A5vX0PUyA16k.jpg?quality=95&as=32x20,48x29,72x44,108x66,160x98,240x147,360x221,480x294,540x331,640x392,720x441,1080x662,1280x784,1440x883,1444x885&from=bu&cs=1444x0)
+<Image src={fcc05} alt="админка роутера на 127.0.0.1:8082/admin — статус Server Stopped" />
 
 ### Добавление халявных моделей на примере NVIDIA NIM
 
-1. Иди на [build.nvidia.com/models](https://build.nvidia.com/models) → рега.
-2. Если просит номер, а РФ нет в списке → проси друга-иностранца или `onlinesim.io` → пополни → арендуй номер Таиланд ~0.30$ → подтверди.
-3. В настройках создай API-ключ → вставь в роутер → **сохрани**.
+Заходим на: [https://build.nvidia.com/models](https://build.nvidia.com/models) и регаемся. Если просит номер, а мы из России (её в списке нет), то **просим друга иностранца**, либо идём на [https://onlinesim.io/ru](https://onlinesim.io/ru) -> пополняем баланс -> арендуем номер Тайланд за `0.30$` и подтверждаем.
 
-Выглядит так:
+Заходим в настройки создаём `API`-ключ и вставляем его в наш роутер, **сохраняем**.
 
-![настроенные провайдеры](https://sun9-78.vkuserphoto.ru/impg/OUutyVE160jSs_NR7yas2hD6PwTdwl4S9sfXJg/EECCFGtUpkM.jpg?size=2233x1279&quality=95&sign=fd49a11e0acddacca4ba86239ec37578&type=album)
+*Выглядеть это должно как-то вот так. Настройка готова.*
 
-По аналогии добавь `OpenRouter`, `Kilo AI`, `OpenCode` — чекай где бесплатные лимиты.
+<Image src={fcc06} alt="настроенные провайдеры моделей NVIDIA NIM в free-claude-code" />
+
+По аналогии можно добавить ключи `OpenRouter`, `Kilo ai`, `OpenCode` и тд (чекайте где есть бесплатные лимиты).
 
 ## Работаем с агентами
 
-Фишка `free-claude-code` — автоматом делает обёртку для запуска агентов. Через роутер надо писать `fcc-<агент>`:
+И самое прикольное в `free-claude-code`, то что он автоматом создаёт обёртку для запуска ваших агентов. Чтобы заставить их работать через наш роутер надо просто прописать **`fcc-*ваш-агент*`**, то есть для `opencode` команда будет:
 
 <div class="not-prose grid sm:grid-cols-3 gap-2 my-4">
   <CopyBox text="fcc-opencode" />
@@ -92,20 +108,12 @@ import CopyBox from "../../components/CopyBox.astro";
   <CopyBox text="fcc-codex" />
 </div>
 
-Гибко: хочешь через роутер — `fcc-`, хочешь напрямую — обычно. Без возни с конфигами.
+для `claude code` это `fcc-claude` и так далее.
 
-![пример команды для opencode](https://sun9-83.vkuserphoto.ru/s/v1/ig2/x6giafej37pMkun5ljujdUl02y_p0MCVjP3DNb3UnKHh4uYkmxG6y9dFT6FZcXn5xSG2oh6JCxpIIsf3c9fCZrTx.jpg?quality=95&as=32x15,48x23,72x34,108x51,160x76,240x114,320x152&from=bu&cs=320x0)
+Т.е. остаётся гибкая возможность запускать агента и с роутером, и в обычном режиме, не тратя время на возню с конфигами.
 
-После запуска работай как обычно. Роутер прокидывает все модели из провайдеров (у меня `NVIDIA NIM + OpenRouter`) — выбирай и делай что хочешь.
+<Image src={fcc07} alt="пример команды fcc-opencode для запуска агента через ИИ-роутер" />
 
-![выбор моделей](https://sun9-62.vkuserphoto.ru/s/v1/ig2/h7aI6EdP-8fdnTlJIN7w8HgWBaGOuVuiq_PyJoAKw0coxnZVvkzoNKcqToWQ0GfDbbVPnJ3K4TRU-TBZDXgkPq0b.jpg?quality=95&as=32x23,48x35,72x52,108x78,160x116,240x173,360x260,480x347,540x390,640x463,720x520,1080x781,1280x925,1440x1041,1688x1220&from=bu&cs=1688x0)
+После запуска работаете как обычно, `free-claude-code` прокидывает все модели, из провайдеров, которые вы добавили (у меня `NVIDIA NIM` + `OpenRouter`), можете их выбирать и делать что хотите. Ну тут вас учить не буду, думаю умеете.
 
-<div class="not-prose mt-8 p-4 rounded-2xl border border-sky-500/20 bg-sky-500/10 flex flex-wrap gap-3 items-center justify-between">
-  <div>
-    <div class="font-bold">Кайфуем на халяве? 😎</div>
-    <div class="text-sm text-slate-300">Подпишись на <b>@golovait</b> — там ещё про вайбкодинг и авто.</div>
-  </div>
-  <a href="https://t.me/golovait" target="_blank" class="px-4 py-2 rounded-full bg-white text-slate-900 font-bold">Telegram Канал →</a>
-</div>
-
-> Оригинал: [Telegraph](https://telegra.ph/Ispolzuem-II-agent-NAHALYAVU-i-kajfuem-08-21-2) · Перенесено на **айти голова** с вёрсткой, копипастом и тёмной темой.
+<Image src={fcc08} alt="выбор моделей NVIDIA NIM и OpenRouter в free-claude-code" />

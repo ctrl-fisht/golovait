@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://golovait.ru/sitemap-index.xml
