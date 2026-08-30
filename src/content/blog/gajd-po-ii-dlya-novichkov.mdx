@@ -1,0 +1,431 @@
+---
+title: 'ГАЙД ПО ИИ ДЛЯ НОВИЧКОВ'
+description: 'Старт в ИИ, бесплатный стартовый набор нейросетей, что такое агенты и вайбкодинг, и с чего начать'
+date: 2026-08-30
+tags: ['ии для новичков', 'chatgpt', 'нейросети', 'вайбкодинг', 'гайд по ии']
+draft: false
+image: '/novichok.jpg'
+---
+
+import CopyBox from '../../components/CopyBox.astro';
+
+<div class="not-prose -mt-2 mb-6 rounded-[24px] overflow-hidden border border-white/10 bg-white/[0.04]">
+  <img
+    src="/novichok.jpg"
+    alt="Гайд по ИИ для новичков — с чего начать"
+    width="1200"
+    height="675"
+    class="w-full h-auto object-cover"
+    loading="eager"
+    decoding="async"
+  />
+</div>
+
+## Введение в базу (кратко)
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-red-500/20 bg-red-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-bold text-red-200">Спойлер:</span> работе с ИИ в общем-то не
+  нужно в привычном смысле "учится".
+</div>
+
+<p
+  class="mt-4 text-[18px] md:text-[20px] font-extrabold leading-7 text-white"
+  style="font-family:Manrope"
+>
+  Для тех кто думает что ИИ это что-то СЛОЖНОЕ чему нужно ДОЛГО УЧИТСЯ:
+</p>
+<p class="mt-3 text-[16px] leading-7 text-slate-200">
+  Весь сегодняший “ИИ” это просто{' '}
+  <span class="font-bold text-white">Языковые модели (LLM)</span> или{' '}
+  <span class="font-bold text-white">генеративные модели</span>.
+</p>
+
+<div class="not-prose grid md:grid-cols-2 gap-3 my-5">
+  <div class="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-sky-300 uppercase">
+      Языковые модели — LLM
+    </div>
+    <div class="mt-2 text-[14px] leading-6 text-slate-200">
+      Ты пишешь текстом свой запрос и получаешь ответ. Всё.
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-1.5">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#10a37f]/15 border border-[#10a37f]/30 text-white font-bold text-[11px] leading-none">
+        ChatGPT
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#8b5cf6]/15 border border-[#8b5cf6]/30 text-white font-bold text-[11px] leading-none">
+        Claude
+      </span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#3b82f6]/15 border border-[#3b82f6]/30 text-white font-bold text-[11px] leading-none">
+        Gemini
+      </span>
+      <span class="text-[11px] font-semibold tracking-wide text-slate-400 uppercase">и другие</span>
+
+    </div>
+
+  </div>
+  <div class="rounded-2xl border border-violet-500/20 bg-violet-500/10 p-4">
+    <div class="text-[11px] font-extrabold tracking-widest text-violet-300 uppercase">
+      Генеративные модели
+    </div>
+    <div class="mt-2 text-[14px] leading-6 text-slate-200">
+      Генераторы картинок, видео и тд. Так же пишешь запрос - но
+      результат картинка/видео.
+    </div>
+    <div class="mt-3 flex flex-wrap items-center gap-1.5">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#f59e0b]/15 border border-[#f59e0b]/30 text-white font-bold text-[11px] leading-none">Kling</span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#eab308]/15 border border-[#eab308]/30 text-white font-bold text-[11px] leading-none">Nano Banana</span>
+      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#ec4899]/15 border border-[#ec4899]/30 text-white font-bold text-[11px] leading-none">Midjourney</span>
+      <span class="text-[11px] font-semibold tracking-wide text-slate-400 uppercase">и другие</span>
+    </div>
+  </div>
+</div>
+А, ну и есть еще штуки,например, для перевода голоса в текст (Whisper) и подобные, их меньшинство.  
+#### Вот и весь ИИ на 2026 год. До AGI еще далеко (надеюсь)
+
+<div class="not-prose my-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div class="text-[13px] font-bold tracking-widest text-slate-400 uppercase mb-3"></div>
+  <ul class="space-y-3 text-[14px] leading-6 text-slate-300">
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        1
+      </span>
+      <span>
+        Учится этому <span class="font-bold text-white">не нужно</span>,
+        заходишь в нужный сервис, платишь деньги и пользуешься.
+      </span>
+    </li>
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        2
+      </span>
+      <span class="flex-1">
+        Если у тебя возник любой вопрос — спрашиваешь у
+        <span class="inline-flex flex-wrap gap-1.5 ml-1 align-middle">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10a37f]/15 border border-[#10a37f]/30 text-white font-bold text-[12px] leading-none">
+            ChatGPT
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#8b5cf6]/15 border border-[#8b5cf6]/30 text-white font-bold text-[12px] leading-none">
+            Claude
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3b82f6]/15 border border-[#3b82f6]/30 text-white font-bold text-[12px] leading-none">
+            Gemini
+          </span>
+        </span>
+      </span>
+    </li>
+    <li class="flex gap-3">
+      <span class="shrink-0 w-6 h-6 rounded-full bg-white text-slate-900 grid place-items-center text-[12px] font-bold">
+        3
+      </span>
+      <span>
+        если тема сложная —{' '}
+        <span class="font-bold text-white">задаешь много вопросов ChatGPT</span>
+        , просишь{' '}
+        <span class="font-bold text-white">объяснить по-простому</span>,
+        смотришь <span class="font-bold text-white">YouTube</span> и тд.
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-center">
+  <span
+    class="text-[15px] font-extrabold text-emerald-200"
+    style="font-family:Manrope"
+  >
+    Это всё. Серьезно.
+  </span>
+</div>
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-[14px] leading-6 text-slate-200">
+  А вот что <span class="font-bold text-amber-200">стоит знать</span> — это
+  настраиваение окружения (Harness), как повысить эффективность ИИ, как тратить
+  меньше токенов и так далее. Об этом я рассказываю у себя в тг
+  <a
+    href="https://t.me/golovait"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1.5 ml-1 px-3 py-1 rounded-full bg-white text-slate-900 font-bold text-[13px] hover:bg-slate-100 transition"
+  >
+    t.me/golovait →
+  </a>
+</div>
+
+## Стартовый набор (БЕСПЛАТНО)
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-red-500/20 bg-red-500/10 text-[14px] leading-6 text-slate-200">
+  Тебе <span class="font-bold text-white">не нужен Claude, не нужен Codex</span>{' '}
+  и вообще <span class="font-bold text-white">не нужно платить деньги</span>{' '}
+  чтобы начать пользоваться ИИ. А еще тебе{' '}
+  <span class="font-bold text-white">
+    не нужно покупать сомнительные сервисы
+  </span>{' '}
+  по созданию сайтов, игр и тд — большинство текущих ИИ-сервисов —{' '}
+  <span class="font-bold text-red-200">ШЛЯПА</span>.
+</div>
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-[14px] leading-6 text-slate-200">
+  Объясняю: <span class="font-bold text-white">ИИ-агент</span> (о них будет
+  ниже) может всё делать сам (намного дешевле). Сервисы продают вам тот же
+  функционал только в красивой упаковке — лучше{' '}
+  <span class="font-bold text-amber-200">
+    раз разобраться, чем как дурак платить
+  </span>
+</div>
+
+Ниже собрал то, чем пользуюсь сам каждый день. Всё бесплатно.
+
+### Языковые модели
+
+| Сервис                                                        | Зачем                      | VPN   | Лимиты             |
+| ------------------------------------------------------------- | -------------------------- | ----- | ------------------ |
+| **ChatGPT** [`chat.openai.com`](https://chat.openai.com)      | Универсал                  | нужен | лимита не достигал |
+| **Gemini** [`gemini.google.com`](https://gemini.google.com)   | Универсал                  | нужен | лимита не достигал |
+| **DeepSeek** [`chat.deepseek.com`](https://chat.deepseek.com) | простые вопросы, сбор инфы | нет   | лимита не достигал |
+
+### Генерация картинок
+
+| Сервис                                                      | Что умеет                                                           | VPN   | Лимиты       |
+| ----------------------------------------------------------- | ------------------------------------------------------------------- | ----- | ------------ |
+| **ChatGPT** [`chat.openai.com`](https://chat.openai.com)    | Промпт → картинка прямо в чате. Без Midjourney и оплат              | нужен | 3-6 в день   |
+| **Gemini** [`gemini.google.com`](https://gemini.google.com) | Тоже генерит, плюс понимает твои фото. Кинул скетч — получил рендер | нужен | 10-15 в день |
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-[14px] leading-6 text-slate-200">
+  <span class="font-bold text-emerald-200">
+    Да, ChatGPT и Gemini умеют генерить картинки, причем БЕСПЛАТНО.
+  </span>{' '}
+  Делаете несколько аккаунтов и вам будет хватать.{' '}
+  <span class="font-bold text-white">И НЕ НАДО ПЛАТИТЬ.</span> Хватит на
+  ежедневное использование - без подписок за 20$.
+</div>
+
+### ИИ-Агенты
+
+| Сервис       | Зачем                                                                                    | Сайт                                 | Примечание                    |
+| ------------ | ---------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------- |
+| **opencode** | Универсал: сам создаёт файлы, правит код, гоняет команды — сайт/бот/скрипт прямо в папке | [`opencode.ai`](https://opencode.ai) | Открытый, быстрый, бесплатный |
+
+<div class="not-prose my-3 p-3 rounded-xl border border-violet-500/20 bg-violet-500/10 text-[13px] leading-5 text-slate-200">
+  Агент - это программа на твоём пк, ты пишешь туда запросы и агент отправляет
+  запросы к языковой модели (напр. ChatGPT), но при этом у агента{' '}
+  <span class="font-bold text-white">есть руки</span>. Он умеет читать твои
+  файлы и выполнять команды. Автоматизирует действия человека за пк.
+</div>
+
+### Генерация видео и визуала
+
+| Сервис                                                                    | Что умеет                                  | Сайт                                         | Лимит               |
+| ------------------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------- | ------------------- |
+| **Satori** [`github.com/vercel/satori`](https://github.com/vercel/satori) | `HTML/CSS` → `PNG/SVG`, превью/карточки/OG | [`satori`](https://github.com/vercel/satori) | Бесплатно, локально |
+| **Remotion** [`remotion.dev`](https://www.remotion.dev)                   | `React` → `MP4`, видео кодом               | [`remotion.dev`](https://www.remotion.dev)   | Бесплатно, локально |
+
+<div class="not-prose my-4 p-4 rounded-2xl border border-white/10 bg-white/[0.03] text-[13px] leading-6 text-slate-300">
+  <div class="flex items-center gap-2 text-[11px] font-extrabold tracking-widest text-slate-400 uppercase">
+    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+    Что это и как работает
+  </div>
+  <div class="mt-2 text-[14px] leading-6 text-slate-200">
+    Я почти не юзаю сервисы по генерации видео, вместо этого я пользуюсь
+    агентом, который генерит код на{' '}
+    <span class="font-bold text-white">HTML + JS</span>, а из этого кода{' '}
+    <span class="font-bold text-white">Satori</span> и{' '}
+    <span class="font-bold text-white">Remotion</span> собирают картинки и
+    видео. Как итог — трачу минимум ресурсов: токены языковых моделей намного
+    дешевле чем платить за генерацию по API.
+  </div>
+  <div class="mt-3 p-3 rounded-xl border border-sky-500/20 bg-sky-500/10 text-[13px] leading-5 text-slate-200">
+    <span class="font-bold text-sky-200">В будущих гайдах</span> разберу
+    подробно как поднять пайплайн, шаблоны и примеры — подпишись на{' '}
+    <a
+      href="https://t.me/golovait"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-bold text-white underline decoration-sky-400/40 hover:decoration-sky-400"
+    >
+      t.me/golovait
+    </a>
+  </div>
+</div>
+
+## Агенты и вайбкодинг
+
+Если в чат с языковой моделью ты сам кидаешь документы, фото, файлы и говоришь что делать. То агент сам умеет работать с файлами на пк и выполнять команды.
+**Вайбкодинг** = ты описываешь словами, а агент кодит.
+
+### Как выглядит работа с агентом
+
+Ты пишешь агенту:
+
+<CopyBox text="Сделай лендинг для кофейни: меню, фото, кнопка WhatsApp, тёмная тема. Запусти и покажи." />
+
+А он:
+
+1. создаёт файлы `index.html`, `style.css`
+2. запускает сайт у тебя в браузере
+3. ты говоришь "сделай кнопку больше" — он правит
+
+### Какого агента выбрать?
+
+<div class="not-prose my-4 rounded-2xl border border-violet-500/20 bg-violet-500/10 p-5">
+  <div class="flex items-center gap-3">
+    <img
+      src="/opencode.webp"
+      alt="opencode"
+      width="40"
+      height="40"
+      class="w-10 h-10 rounded-xl object-cover border border-white/10 shrink-0"
+      loading="lazy"
+    />
+    <div>
+      <div
+        class="text-[15px] font-extrabold text-white leading-tight"
+        style="font-family:Manrope"
+      >
+        opencode
+      </div>
+      <div class="text-[12px] text-violet-200">есть бесплатные модели</div>
+    </div>
+    <span class="ml-auto hidden sm:inline-flex px-2.5 py-1 rounded-full bg-white text-slate-900 text-[11px] font-extrabold tracking-widest">
+      я пользуюсь
+    </span>
+  </div>
+  <div class="mt-3 space-y-2 text-[14px] leading-6 text-slate-200">
+    <p>
+      Всем советую ставить для начала
+      <span class="font-bold text-white">opencode</span>. В нём есть бесплатные
+      модели с хорошими лимитами.
+    </p>
+  </div>
+  <div class="mt-3 flex flex-wrap gap-2">
+    <a
+      href="https://www.youtube.com/watch?v=z7901BIReGs"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-slate-900 font-bold text-[13px] hover:bg-slate-100 transition"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M23 12s0-3.55-.45-5.27a1.9 1.9 0 0 0-1.33-1.33C19.5 5 12 5 12 5s-7.5 0-9.22.4A1.9 1.9 0 0 0 1.45 6.73C1 8.45 1 12 1 12s0 3.55.45 5.27a1.9 1.9 0 0 0 1.33 1.33C4.5 19 12 19 12 19s7.5 0 9.22-.4a1.9 1.9 0 0 0 1.33-1.33C23 15.55 23 12 23 12Z"
+          fill="#FF0000"
+        />
+        <path d="M10 15.5 16 12l-6-3.5v7Z" fill="white" />
+      </svg>
+      Гайд по установке →
+    </a>
+    <a
+      href="https://opencode.ai"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white font-bold text-[13px] hover:bg-white/10 transition"
+    >
+      opencode.ai →
+    </a>
+  </div>
+</div>
+
+### Скиллы и MCP для агента
+
+Кароче скиллы - это просто набор инструкций которые даются языковой модели перед работой.
+Например:
+
+<CopyBox text="отвечай кратко, если непонятно задавай вопросы, как напишешь код покрой тестами" />
+
+Это уже можно назвать скиллом!
+Кайф в том, что кто-то за вас уже написал крутые инструкции для создания лендинга, монтажа, картинок, сбора информации и тд и можно просто их поставить.
+
+Попросите своего агента поискать скиллы для нужной темы и установить их! Он сам всё это умеет.
+
+<div class="not-prose my-4 grid md:grid-cols-2 gap-3">
+  <div class="rounded-2xl border border-sky-500/20 bg-sky-500/10 p-4">
+    <div class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-xl bg-white text-sky-600 grid place-items-center text-[14px]">
+        ⚡
+      </span>
+      <div class="text-[11px] font-extrabold tracking-widest text-sky-300 uppercase">
+        Скиллы
+      </div>
+      <span class="ml-auto text-[10px] font-bold tracking-widest text-sky-200 bg-sky-500/15 border border-sky-500/20 px-2 py-0.5 rounded-full">
+        skills
+      </span>
+    </div>
+    <div class="mt-3 text-[13px] leading-5 text-slate-200">
+      Готовые наборы инструкций для агента{' '}
+      <span class="font-bold text-white">навыки</span>. Подключил — и агент уже
+      умеет: ревьюить код, писать тесты, деплоить
+    </div>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        code-review
+      </span>
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        satori-gen
+      </span>
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        remotion
+      </span>
+    </div>
+  </div>
+  <div class="rounded-2xl border border-violet-500/20 bg-violet-500/10 p-4">
+    <div class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-xl bg-white text-violet-600 grid place-items-center text-[14px]">
+        🔌
+      </span>
+      <div class="text-[11px] font-extrabold tracking-widest text-violet-300 uppercase">
+        MCP
+      </div>
+      <span class="ml-auto text-[10px] font-bold tracking-widest text-violet-200 bg-violet-500/15 border border-violet-500/20 px-2 py-0.5 rounded-full">
+        mcp
+      </span>
+    </div>
+    <div class="mt-3 text-[13px] leading-5 text-slate-200">
+      Протокол, для подключения агента к разным сервисам. Подключили{' '}
+      <span class="font-bold text-white">gmail-mcp</span>: и теперь у агента
+      доступ к вашей почте, он может читать/отправлять сообщения. Дополнительные
+      возможности.
+    </div>
+    <div class="mt-2 flex flex-wrap gap-1.5">
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        filesystem
+      </span>
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        github
+      </span>
+      <span class="px-2 py-1 rounded-full bg-white/10 border border-white/10 text-[11px] font-medium text-slate-300">
+        telegram
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="not-prose my-4 p-3 rounded-xl border border-white/10 bg-white/[0.03] text-[13px] leading-5 text-slate-300">
+  <span class="font-bold text-white">Короче:</span> скилл ={' '}
+  <span class="font-bold text-sky-200">инструкции </span>для агента, MCP ={' '}
+  <span class="font-bold text-violet-200">руки</span>
+</div>
+
+---
+
+## Итог
+
+Погружение в ИИ - максимально простое!
+Дальше один путь - пробовать руками. Качай агента, попробуй написать сайт -> спроси что нужно чтоб его разместить в интернете и тд.
+Например вот этот сайт со статьями написан за пару часов с помощью opencode + deepseek v4 flash.
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-[14px] leading-6 text-slate-200">
+  Застрял? <span class="font-bold text-white">спроси у самой нейронки</span>.
+  Попроси объяснить проще, показать пример, исправить ошибку, собрать план
+  обучения под тебя. В этом и прелесть —{' '}
+  <span class="font-bold text-emerald-200">ты изучаешь ИИ с помощью ИИ</span>.
+  Лучшего учителя уже не найти — он отвечает 24/7 и никогда не устает от твоих
+  «а почему?».
+</div>
+
+<div class="not-prose my-5 p-4 rounded-2xl border border-sky-500/20 bg-sky-500/10 text-center">
+
+</div>

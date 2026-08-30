@@ -1,9 +1,10 @@
 ---
 import Base from "./Base.astro";
-const { title, description, date, tags = [], dateISO } = Astro.props;
+const { title, description, date, tags = [], dateISO, image } = Astro.props;
 const seoDescription = description && description.trim().length > 20 ? description : `${title} — гайд по бесплатным ИИ-агентам, роутерам и лимитам на айти голова`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const publishedISO = dateISO ? new Date(dateISO).toISOString() : new Date().toISOString();
+const ogImage = image ?? "/og.png";
 const blogPostingJson = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -19,7 +20,7 @@ const blogPostingJson = {
     logo: { "@type": "ImageObject", url: new URL("/ava.jpg", Astro.site).toString() }
   },
   mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-  image: new URL("/og.png", Astro.site).toString(),
+  image: new URL(ogImage, Astro.site).toString(),
   keywords: tags.length ? tags.join(", ") : undefined
 };
 const breadcrumbJson = {
@@ -32,7 +33,7 @@ const breadcrumbJson = {
   ]
 };
 ---
-<Base title={title} description={seoDescription}>
+<Base title={title} description={seoDescription} image={ogImage}>
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingJson)}></script>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJson)}></script>
   <div class="max-w-[1120px] mx-auto px-4 py-6 lg:flex lg:gap-8 lg:items-start">
@@ -62,7 +63,7 @@ const breadcrumbJson = {
           ))}
         </div>
       )}
-      <article id="article-content" class="prose prose-invert prose-slate max-w-none prose-headings:font-[Manrope] prose-headings:text-white prose-h1:text-[28px] prose-h2:text-[24px] prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-white/10 prose-h2:font-extrabold prose-h3:text-[18px] prose-h3:mt-8 prose-h3:mb-3 prose-h3:font-bold prose-p:text-slate-300 prose-p:leading-7 prose-strong:text-white prose-a:text-sky-400 prose-ul:text-slate-300 prose-ol:text-slate-300 prose-blockquote:border-l-4 prose-blockquote:border-sky-500 prose-blockquote:bg-white/[0.04] prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-xl prose-img:rounded-2xl prose-img:border prose-img:border-white/10 prose-img:my-6 prose-code:bg-white/10 prose-code:text-sky-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-[13px] prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-[#0f1117] prose-pre:border prose-pre:border-white/10 mt-6">
+      <article id="article-content" class="prose prose-invert prose-slate max-w-none prose-headings:font-[Manrope] prose-headings:text-white prose-h1:text-[28px] prose-h2:text-[24px] prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-white/10 prose-h2:font-extrabold prose-h3:text-[18px] prose-h3:mt-8 prose-h3:mb-3 prose-h3:font-bold prose-p:text-slate-300 prose-p:leading-7 prose-strong:text-white prose-a:text-sky-400 prose-a:no-underline hover:prose-a:text-sky-300 prose-a:font-medium prose-a:cursor-pointer prose-ul:text-slate-300 prose-ol:text-slate-300 prose-blockquote:border-l-4 prose-blockquote:border-sky-500 prose-blockquote:bg-white/[0.04] prose-blockquote:py-3 prose-blockquote:px-4 prose-blockquote:rounded-xl prose-img:rounded-2xl prose-img:border prose-img:border-white/10 prose-img:my-6 prose-code:bg-white/10 prose-code:text-sky-200 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-[13px] prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:bg-[#0f1117] prose-pre:border prose-pre:border-white/10 mt-6">
         <slot />
       </article>
       <div class="mt-8 p-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex flex-wrap gap-3 items-center justify-between border border-white/5">
@@ -80,6 +81,19 @@ const breadcrumbJson = {
 
   <style>
     html { scroll-behavior: smooth; }
+    #article-content a {
+      text-decoration: none !important;
+      cursor: pointer;
+    }
+    #article-content a:hover {
+      text-decoration: none !important;
+    }
+    #article-content hr {
+      height: 1px;
+      border: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      margin: 2.5rem 0;
+    }
   </style>
 
   <script>
