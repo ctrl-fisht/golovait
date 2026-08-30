@@ -94,10 +94,49 @@ const breadcrumbJson = {
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
       margin: 2.5rem 0;
     }
+    /* global table fallback: wrap overflow on mobile */
+    #article-content table {
+      width: 100%;
+      font-size: 13px;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    #article-content thead th {
+      white-space: nowrap;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.06);
+    }
+    #article-content .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      margin: 1.25rem -1rem;
+      padding: 0 1rem 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+    }
+    #article-content .table-wrap::-webkit-scrollbar { height: 6px; }
+    #article-content .table-wrap::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 9999px; }
+    #article-content .table-wrap table { min-width: 560px; }
+    @media (min-width: 768px) {
+      #article-content .table-wrap { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
+    }
   </style>
 
   <script>
     const article = document.getElementById('article-content');
+    // global fallback: wrap any markdown table for horizontal scroll on mobile
+    if (article) {
+      article.querySelectorAll('table').forEach((t) => {
+        if (t.parentElement?.classList.contains('table-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrap not-prose';
+        t.parentNode?.insertBefore(wrap, t);
+        wrap.appendChild(t);
+      });
+    }
     const nav = document.getElementById('toc-nav');
     const list = document.getElementById('toc-list');
     if (article && nav && list) {

@@ -177,18 +177,68 @@ import CopyBox from '../../components/CopyBox.astro';
 
 ### Языковые модели
 
-| Сервис                                                        | Зачем                      | VPN   | Лимиты             |
-| ------------------------------------------------------------- | -------------------------- | ----- | ------------------ |
-| **ChatGPT** [`chat.openai.com`](https://chat.openai.com)      | Универсал                  | нужен | лимита не достигал |
-| **Gemini** [`gemini.google.com`](https://gemini.google.com)   | Универсал                  | нужен | лимита не достигал |
-| **DeepSeek** [`chat.deepseek.com`](https://chat.deepseek.com) | простые вопросы, сбор инфы | нет   | лимита не достигал |
+<div class="not-prose my-4 grid gap-3 sm:grid-cols-3">
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <div class="text-[14px] font-extrabold text-white leading-tight">ChatGPT</div>
+        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">chat.openai.com</a>
+      </div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/20 text-amber-200 text-[11px] font-bold leading-none">VPN нужен</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300"><span class="text-slate-400">Зачем:</span> <span class="font-semibold text-white">Универсал</span></div>
+    <div class="text-[12px] text-slate-400">Лимиты: лимита не достигал</div>
+  </div>
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <div class="text-[14px] font-extrabold text-white leading-tight">Gemini</div>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">gemini.google.com</a>
+      </div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/20 text-amber-200 text-[11px] font-bold leading-none">VPN нужен</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300"><span class="text-slate-400">Зачем:</span> <span class="font-semibold text-white">Универсал</span></div>
+    <div class="text-[12px] text-slate-400">Лимиты: лимита не достигал</div>
+  </div>
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <div class="text-[14px] font-extrabold text-white leading-tight">DeepSeek</div>
+        <a href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">chat.deepseek.com</a>
+      </div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20 text-emerald-200 text-[11px] font-bold leading-none">без VPN</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300"><span class="text-slate-400">Зачем:</span> <span class="font-semibold text-white">простые вопросы, сбор инфы</span></div>
+    <div class="text-[12px] text-slate-400">Лимиты: лимита не достигал</div>
+  </div>
+</div>
 
 ### Генерация картинок
 
-| Сервис                                                      | Что умеет                                                           | VPN   | Лимиты       |
-| ----------------------------------------------------------- | ------------------------------------------------------------------- | ----- | ------------ |
-| **ChatGPT** [`chat.openai.com`](https://chat.openai.com)    | Промпт → картинка прямо в чате. Без Midjourney и оплат              | нужен | 3-6 в день   |
-| **Gemini** [`gemini.google.com`](https://gemini.google.com) | Тоже генерит, плюс понимает твои фото. Кинул скетч — получил рендер | нужен | 10-15 в день |
+<div class="not-prose my-4 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <div class="text-[14px] font-extrabold text-white leading-tight">ChatGPT</div>
+        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">chat.openai.com</a>
+      </div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/20 text-amber-200 text-[11px] font-bold leading-none">VPN нужен</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300">Промпт → картинка прямо в чате. Без Midjourney и оплат</div>
+    <div class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> 3–6 в день</div>
+  </div>
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-start justify-between gap-2">
+      <div>
+        <div class="text-[14px] font-extrabold text-white leading-tight">Gemini</div>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">gemini.google.com</a>
+      </div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/20 text-amber-200 text-[11px] font-bold leading-none">VPN нужен</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300">Тоже генерит, плюс понимает твои фото. Кинул скетч — получил рендер</div>
+    <div class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-slate-300"><span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span> 10–15 в день</div>
+  </div>
+</div>
 
 <div class="not-prose my-4 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-[14px] leading-6 text-slate-200">
   <span class="font-bold text-emerald-200">
@@ -201,9 +251,17 @@ import CopyBox from '../../components/CopyBox.astro';
 
 ### ИИ-Агенты
 
-| Сервис       | Зачем                                                                                    | Сайт                                 | Примечание                    |
-| ------------ | ---------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------- |
-| **opencode** | Универсал: сам создаёт файлы, правит код, гоняет команды — сайт/бот/скрипт прямо в папке | [`opencode.ai`](https://opencode.ai) | Открытый, быстрый, бесплатный |
+<div class="not-prose my-4 rounded-2xl border border-violet-500/20 bg-violet-500/10 p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <div class="flex items-center gap-3">
+    <img src="/opencode.webp" alt="opencode" width="36" height="36" class="w-9 h-9 rounded-xl object-cover border border-white/10 shrink-0" loading="lazy" />
+    <div>
+      <div class="text-[14px] font-extrabold text-white leading-tight">opencode</div>
+      <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer" class="text-[12px] text-violet-300 hover:text-white break-all">opencode.ai</a>
+    </div>
+  </div>
+  <div class="flex-1 sm:mx-4 text-[13px] leading-5 text-slate-200">Универсал: сам создаёт файлы, правит код, гоняет команды — сайт/бот/скрипт прямо в папке</div>
+  <span class="shrink-0 inline-flex px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20 text-emerald-200 text-[11px] font-bold leading-none">Бесплатный</span>
+</div>
 
 <div class="not-prose my-3 p-3 rounded-xl border border-violet-500/20 bg-violet-500/10 text-[13px] leading-5 text-slate-200">
   Агент - это программа на твоём пк, ты пишешь туда запросы и агент отправляет
@@ -214,10 +272,24 @@ import CopyBox from '../../components/CopyBox.astro';
 
 ### Генерация видео и визуала
 
-| Сервис                                                                    | Что умеет                                  | Сайт                                         | Лимит               |
-| ------------------------------------------------------------------------- | ------------------------------------------ | -------------------------------------------- | ------------------- |
-| **Satori** [`github.com/vercel/satori`](https://github.com/vercel/satori) | `HTML/CSS` → `PNG/SVG`, превью/карточки/OG | [`satori`](https://github.com/vercel/satori) | Бесплатно, локально |
-| **Remotion** [`remotion.dev`](https://www.remotion.dev)                   | `React` → `MP4`, видео кодом               | [`remotion.dev`](https://www.remotion.dev)   | Бесплатно, локально |
+<div class="not-prose my-4 grid gap-3 sm:grid-cols-2">
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-center justify-between gap-2">
+      <div class="text-[14px] font-extrabold text-white leading-tight">Satori</div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20 text-emerald-200 text-[11px] font-bold leading-none">Бесплатно, локально</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300"><span class="font-mono text-sky-200">HTML/CSS</span> → <span class="font-mono text-sky-200">PNG/SVG</span>, превью/карточки/OG</div>
+    <a href="https://github.com/vercel/satori" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">github.com/vercel/satori</a>
+  </div>
+  <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-col gap-2">
+    <div class="flex items-center justify-between gap-2">
+      <div class="text-[14px] font-extrabold text-white leading-tight">Remotion</div>
+      <span class="shrink-0 px-2 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/20 text-emerald-200 text-[11px] font-bold leading-none">Бесплатно, локально</span>
+    </div>
+    <div class="text-[13px] leading-5 text-slate-300"><span class="font-mono text-violet-200">React</span> → <span class="font-mono text-violet-200">MP4</span>, видео кодом</div>
+    <a href="https://www.remotion.dev" target="_blank" rel="noopener noreferrer" class="text-[12px] text-sky-400 hover:text-sky-300 break-all">remotion.dev</a>
+  </div>
+</div>
 
 <div class="not-prose my-4 p-4 rounded-2xl border border-white/10 bg-white/[0.03] text-[13px] leading-6 text-slate-300">
   <div class="flex items-center gap-2 text-[11px] font-extrabold tracking-widest text-slate-400 uppercase">
